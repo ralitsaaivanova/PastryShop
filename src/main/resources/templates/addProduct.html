@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cake Delights | SignUp</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--[if IE 8]><link rel="stylesheet" type="text/css" href="css/ie8.css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/ie7.css"><![endif]-->
+    <!--[if IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css"><![endif]-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    -->
+
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" /> -->
+</head>
+<body>
+<div id="header">
+    <div>
+        <div>
+            <div id="logo"> <a href="#"><img src="images/logo.gif" alt=""></a> </div>
+            <div>
+                <div> <a href="signup.html">My Account</a> <a href="#">Help</a> <a href="signin.html" class="last">Sign in</a> </div>
+                <form action="#">
+                    <input type="text" id="search" maxlength="30">
+                    <input type="submit" value="" id="searchbtn">
+                </form>
+            </div>
+        </div>
+        <ul>
+            <li><a href="/index">Home</a></li>
+            <li class="current"><a href="/product">The Pastry shop</a></li>
+            <li><a href="/about">About us</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+        <div class="section"> <a href="#"><img src="images/wedding-cupcakes-small.jpg" alt=""></a> </div>
+    </div>
+</div>
+<div id="content">
+    <div>
+        <div id="product">
+            <div>
+                <!---------Registration form start----->
+                <form th:action="@{/addProduct}"
+                      th:method="POST"
+                      th:object="${productDTO}">
+                    <span>Add Product</span>
+                    <table>
+                        <tr>
+                            <td><label for="name">Product Name</label></td>
+                            <td><input type="text" id="name" name="name"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="price">Price</label></td>
+                            <td><input type="number" id="price" name="price"
+                                       min="0" max="1000" step="0.01"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="currencies">Currency</label></td>
+                            <td><select id="currencies" name="currencies">
+                                <option> </option>
+                                <option value="BGN">lv</option>
+                                <option value="EUR">euro</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="weight">Weight</label></td>
+                            <td><input type="number" id="weight" name="weight"
+                                       min="0" max="1000" step="0.01"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="measures">Measure</label></td>
+                            <td><select id="measures" name="measures">
+                                <option> </option>
+                                <option value="grams">g</option>
+                                <option value="kilograms">kg</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="categories">Category</label></td>
+                            <td><select id="categories" name="categories">
+                                <option> </option>
+                                <option value="cheesecake">Cheesecake</option>
+                                <option value="cakes without chocolate">Cakes without Chocolate</option>
+                                <option value="chocolate cakes">Chocolate cakes</option>
+                                <option value="cupcakes">Cupcakes</option>
+                                <option value="sweets">Sweets</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="photo">Photo</label></td>
+                            <td>
+                                <input type="" name="photo" id="photo">
+                            </td>
+                        </tr>
+
+                    </table>
+                    <input type="submit" value="Add Product" class="submitbtn">
+                </form>
+            </div>
+            <!---------Registration form start----->
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="section">
+        <div>
+            <div class="aside">
+                <div>
+                    <div> <b>Too <span>BUSY</span> to shop?</b> <a href="signin.html">Sign up for free</a>
+                        <p>and we'll deliver it on your doorstep</p>
+                    </div>
+                </div>
+            </div>
+            <div class="connect"> <span>Follow Us</span>
+                <ul>
+                    <li><a href="#" class="facebook">Facebook</a></li>
+                    <li><a href="#" class="twitter">Twitter</a></li>
+                    <li><a href="#" class="subscribe">Subscribe</a></li>
+                    <li><a href="#" class="flicker">Flicker</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="featured">
+        <ul>
+            <li class="first"> <a href="#"><img src="images/fruit-cake.jpg" alt=""></a>
+                <h2><a href="#">Tips on how to preserve</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adispiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. <a href="#" class="readmore">read more</a></p>
+            </li>
+            <li> <a href="#"><img src="images/italian.jpg" alt=""></a>
+                <h2><a href="#">Menu of the day: Italian</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adispiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. <a href="#" class="readmore">read more</a></p>
+            </li>
+            <li> <a href="#"><img src="images/fruit.jpg" alt=""></a>
+                <h2><a href="#">Fruit menu for your diet</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adispiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. <a href="#" class="readmore">read more</a></p>
+            </li>
+            <li> <a href="#"><img src="images/desserts.jpg" alt=""></a>
+                <h2><a href="#">Desserts for every occassion</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adispiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. <a href="#" class="readmore">read more</a></p>
+            </li>
+        </ul>
+    </div>
+    <div id="navigation">
+        <div>
+            <ul>
+                <li class="first"><a href="#">help</a></li>
+                <li><a href="#">about cake delight</a></li>
+                <li><a href="#">cake delight talk</a></li>
+                <li><a href="#">developers</a></li>
+                <li><a href="#">privacy policy</a></li>
+                <li><a href="#">terms of use</a></li>
+            </ul>
+            <p>Copyright &copy; 2012 <a href="#">Domain Name</a> All rights reserved | Website Template By <a target="_blank" href="http://www.freewebsitetemplates.com/">freewebsitetemplates.com</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
