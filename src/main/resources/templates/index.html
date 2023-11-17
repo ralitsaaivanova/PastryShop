@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Cake Delights</title>
 <meta charset="UTF-8">
@@ -14,7 +14,7 @@
     <div>
       <div id="logo"> <a href="#"><img src="images/logo.gif" alt=""></a> </div>
       <div>
-        <div> <a href="signup.html">My Account</a> <a href="#">Help</a> <a href="signin.html" class="last">Sign in</a> </div>
+        <div> <a href="">My Account</a> <a href="#">Help</a> <a href="/signup">Sign up</a> <a href="/signin" class="last">Sign in</a>  </div>
         <form action="#">
           <input type="text" id="search" maxlength="30">
           <input type="submit" value="" id="searchbtn">
@@ -22,24 +22,24 @@
       </div>
     </div>
     <ul>
-      <li class="current"><a href="index.html">Home</a></li>
-      <li><a href="product.html">The Pastry shop</a></li>
-      <li><a href="about.html">About us</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
+      <li class="current"><a href="/index">Home</a></li>
+      <li><a href="/product">The Pastry shop</a></li>
+      <li><a href="/about">About us</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/contact">Contact Us</a></li>
     </ul>
     <div id="section">
       <ul>
-        <li><a href="#">cheese cakes</a></li>
-        <li><a href="#">sponge cakes</a></li>
-        <li><a href="#">butter cakes</a></li>
-        <li class="selected"><a href="#">layer cakes</a></li>
-        <li><a href="#">sheet cakes</a></li>
-        <li><a href="#">cupcakes</a></li>
+        <li><a href="/cheesecakes">Cheesecakes</a></li>
+        <li><a href="/cakeswithoutchocolate">Cakes without chocolate</a></li>
+        <li><a href="/chocolatecakes">Chocolate cakes</a></li>
+        <li ><a href="/cupcakes">Cupcakes</a></li>
+        <li><a href="/sweets">Sweets</a></li>
+        <!--<li><a href="#">cupcakes</a></li>
         <li><a href="#">fondant cakes</a></li>
         <li><a href="#">swiss roll</a></li>
-        <li><a href="#">other desserts</a></li>
+        <li><a href="#">other desserts</a></li>-->
       </ul>
       <a href="#"><img src="images/wedding-cupcakes-large.jpg" alt=""></a> </div>
   </div>

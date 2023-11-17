@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Cake Delights | SignUp</title>
 <meta charset="UTF-8">
@@ -7,6 +7,11 @@
 <!--[if IE 8]><link rel="stylesheet" type="text/css" href="css/ie8.css"><![endif]-->
 <!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/ie7.css"><![endif]-->
 <!--[if IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css"><![endif]-->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  -->
+
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" /> -->
 </head>
 <body>
 <div id="header">
@@ -22,12 +27,12 @@
       </div>
     </div>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="product.html">The Pastry shop</a></li>
-      <li><a href="about.html">About us</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="/index">Home</a></li>
+      <li class="current"><a href="/product">The Pastry shop</a></li>
+      <li><a href="/about">About us</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/contact">Contact Us</a></li>
     </ul>
     <div class="section"> <a href="#"><img src="images/wedding-cupcakes-small.jpg" alt=""></a> </div>
   </div>
@@ -36,25 +41,39 @@
   <div>
     <div id="account">
       <div>
-        <form action="#">
+        <!---------Registration form start----->
+        <form th:action="@{/signup}"
+              th:method="POST"
+              th:object="${userRegistrationDTO}">
           <span>SIGN-UP</span>
           <table>
             <tr>
               <td><label for="email">E-mail</label></td>
-              <td><input type="text" id="email"></td>
+              <td><input type="text" id="email" name="email"></td>
             </tr>
             <tr>
-              <td><label for="login">Login</label></td>
-              <td><input type="text" id="login"></td>
+              <td><label for="username">Username</label></td>
+              <td><input type="text" id="username"></td>
+            </tr>
+            <tr>
+              <td><label for="roles">Role</label></td>
+              <td><select id="roles" name="roles">
+                <option> </option>
+                <option value="Buyer">Buyer</option>
+                <option value="Seller">Seller</option>
+              </select>
+              </td>
             </tr>
             <tr>
               <td><label for="password">Password</label></td>
-              <td><input type="text" id="password"></td>
+              <td>
+                  <input type="password" name="password" id="password">
+              </td>
             </tr>
             <tr>
               <td><label for="confirmpass">Confirm<br>
                   Password</label></td>
-              <td><input type="text" id="confirmpass"></td>
+              <td><input type="password" id="confirmpass"></td>
             </tr>
             <tr>
               <td></td>
@@ -66,6 +85,7 @@
           <input type="submit" value="Sign-up" class="submitbtn">
         </form>
       </div>
+      <!---------Registration form start----->
     </div>
   </div>
 </div>
@@ -123,5 +143,7 @@
     </div>
   </div>
 </div>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -150,6 +150,7 @@ p a {
 	text-align: center;
 	text-shadow: 1px 1px 0 #ad657d, -1px -1px 0 #ad657d, -1px 1px 0 #ad657d, 1px -1px 0 #ad657d;
 	text-transform: lowercase;
+
 }
 #header div div#section ul li a:hover, #header div div#section ul li.selected a {
 	color: #7c0d37;
@@ -699,11 +700,73 @@ p a {
 	display: block;
 	padding: 15px 10px 10px 15px;
 }
-#content div div#account div form input#email, #content div div#account div form input#login, #content div div#account div form input#password, #content div div#account div form input#confirmpass, #content div div#account div form input#name {
+#content div div#account div form input#email,
+#content div div#account div form input#username ,
+#content div div#account div form select#roles,
+#content div div#account div form input#password,
+#content div div#account div form input#confirmpass,
+#content div div#account div form input#name {
 	border: 1px solid #e0e0e0;
 	height: 25px;
 	width: 310px;
 }
+
+#content div div#product {
+	background: url(../images/bg-form-top-curve.gif) no-repeat center top;
+	color: #5F5D5E;
+	margin: 60px auto 0;
+	padding: 10px 0 0;
+	width: 420px;
+}
+
+#content div div#product div {
+	background: url(../images/bg-form-bottom-curve.gif) no-repeat center bottom;
+	padding: 0 0 10px;
+	width: auto;
+}
+#content div div#product div form {
+	background: url(../images/bg-form.gif) repeat-y;
+	margin: 0;
+	padding-bottom: 15px;
+}
+#content div div#product div form input {
+	color: #5F5D5E;
+	margin: 0 0 0 10px;
+}
+#content div div#product div form span {
+	color: #84284D;
+	display: block;
+	padding: 15px 10px 10px 15px;
+}
+
+
+
+#content div div#product div form input#name,
+#content div div#product div form input#price,
+#content div div#product div form select#currencies,
+#content div div#product div form input#weight,
+#content div div#product div form select#measures,
+#content div div#product div form select#categories,
+#content div div#product div form input#photo
+{
+	border: 1px solid #e0e0e0;
+	height: 25px;
+	width: 310px;
+}
+
+#content div div#product div form{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#content div div#product div form span{
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+
+
+
 #content div div#account div form input#rememberme {
 	display: inline-block;
 	vertical-align: sub;
@@ -723,6 +786,18 @@ p a {
 	vertical-align: sub;
 }
 #content div div#account div form input.submitbtn {
+	background: url(../images/sprite-buttons.gif) no-repeat 0 -376px;
+	color: #84284D;
+	border: 0;
+	height: 25px;
+	font-size: 11px;
+	margin-left: 300px;
+	margin-top: 10px;
+	text-transform: uppercase;
+	width: 90px;
+}
+
+#content div div#product div form input.submitbtn {
 	background: url(../images/sprite-buttons.gif) no-repeat 0 -376px;
 	color: #84284D;
 	border: 0;

@@ -27,4 +27,4 @@ logging:
     blog: WARN
 server:
   port: 7070
-
+debug: true
