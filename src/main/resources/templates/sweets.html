@@ -1,37 +1,12 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Cake Delights | Product</title>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <!--[if IE 8]><link rel="stylesheet" type="text/css" href="css/ie8.css"><![endif]-->
-  <!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/ie7.css"><![endif]-->
-  <!--[if IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css"><![endif]-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}">
 </head>
+
 <body>
-<div id="header">
-  <div>
-    <div>
-      <div id="logo"> <a href="#"><img src="images/logo.gif" alt=""></a> </div>
-      <div>
-        <div> <a href="signup.html">My Account</a> <a href="#">Help</a> <a href="signin.html" class="last">Sign in</a> </div>
-        <form action="#">
-          <input type="text" id="search" maxlength="30">
-          <input type="submit" value="" id="searchbtn">
-        </form>
-      </div>
-    </div>
-    <ul>
-      <li><a href="/index">Home</a></li>
-      <li ><a href="/product">The Pastry shop</a></li>
-      <li><a href="/about">About us</a></li>
-      <li><a href="/services">Services</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href="/contact">Contact Us</a></li>
-    </ul>
-    <div class="section"> <a href="#"><img src="images/wedding-cupcakes-small.jpg" alt=""></a> </div>
-  </div>
+<div id="header" th:replace="~{fragments/header-navbar}">
 </div>
+
 <div id="content">
   <div>
     <h1>The Pastry shop</h1>

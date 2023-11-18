@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Cake Delights | Product</title>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<!--[if IE 8]><link rel="stylesheet" type="text/css" href="css/ie8.css"><![endif]-->
-<!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/ie7.css"><![endif]-->
-<!--[if IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css"><![endif]-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}">
 </head>
+
+
+
 <body>
-<div id="header">
+<div id="header" th:fragment="header-navbar">
   <div>
     <div>
       <div id="logo"> <a href="#"><img src="images/logo.gif" alt=""></a> </div>
@@ -32,6 +29,11 @@
     <div class="section"> <a href="#"><img src="images/wedding-cupcakes-small.jpg" alt=""></a> </div>
   </div>
 </div>
+</body>
+
+
+
+
 <div id="content">
   <div>
     <h1>The Pastry shop</h1>

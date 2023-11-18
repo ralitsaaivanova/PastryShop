@@ -11,7 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserRegistrationController {
 
+    private final UserService userService;
+
     public UserRegistrationController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/signup")
@@ -21,8 +24,10 @@ public class UserRegistrationController {
 
 
     @PostMapping("/signup")
-    public ModelAndView signup(
-            @ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO) {
+    public ModelAndView signup(@ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO) {
+        userService.registerUser(userRegistrationDTO);
+//
+//
 //        if (loggedUser.isLogged()) {
 //            return new ModelAndView("redirect:/index");
 //        }
