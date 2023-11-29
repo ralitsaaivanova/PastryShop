@@ -24,15 +24,9 @@ public class UserRegistrationController {
 
 
     @PostMapping("/signup")
-    public ModelAndView signup(@ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO) {
+    public String signup(UserRegistrationDTO userRegistrationDTO) {
         userService.registerUser(userRegistrationDTO);
-//
-//
-//        if (loggedUser.isLogged()) {
-//            return new ModelAndView("redirect:/index");
-//        }
-
-        return new ModelAndView("redirect:/signin");
+        return "redirect:/signin";
     }
 
 }
