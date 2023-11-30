@@ -5,6 +5,7 @@ import org.softuni.pastryShop.model.entities.User;
 import org.softuni.pastryShop.model.enums.Role;
 import org.softuni.pastryShop.repository.UserRepository;
 import org.softuni.pastryShop.service.UserService;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void registerUser(UserRegistrationDTO userRegistrationDTO) {
         userRepository.save(map(userRegistrationDTO));
+    }
+
+    @Override
+    public Authentication login(String email) {
+        return null;
     }
 
     private User map(UserRegistrationDTO userRegistrationDTO){

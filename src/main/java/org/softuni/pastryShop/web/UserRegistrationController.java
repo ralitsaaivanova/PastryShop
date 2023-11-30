@@ -1,5 +1,6 @@
 package org.softuni.pastryShop.web;
 
+import jakarta.validation.Valid;
 import org.softuni.pastryShop.model.dto.UserRegistrationDTO;
 import org.softuni.pastryShop.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class UserRegistrationController {
 
 
     @PostMapping("/signup")
-    public String signup(UserRegistrationDTO userRegistrationDTO) {
+    public String signup(@Valid UserRegistrationDTO userRegistrationDTO) {
         userService.registerUser(userRegistrationDTO);
         return "redirect:/signin";
     }

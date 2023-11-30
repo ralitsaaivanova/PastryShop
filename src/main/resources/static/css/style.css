@@ -73,33 +73,24 @@ p a {
 	float: left;
 	line-height: 30px;
 }
-#header div div div form input#search {
-	background: url(../images/input-search.gif) no-repeat 0 0;
-	border: 0;
-	height: 30px;
-	padding: 0 5px;
-	width: 220px;
-}
-#header div div div form input#searchbtn {
-	background: url(../images/sprite-buttons.gif) no-repeat 0 -291px;
-	border: none;
-	height: 30px;
-	width: 60px;
-}
-#header div ul {
+
+#header div ul#home-products{
 	list-style: none;
-	margin: 0;
 	overflow: hidden;
 	padding: 0;
+	margin-left: 11px;
+	display: flex;
+
 }
 #header div ul li {
 	float: left;
 	height: 50px;
 	line-height: 50px;
-	width: 160px;
+	width: 471px;
+
 }
-#header div ul li a {
-	background: url(../images/sprite-buttons.gif) no-repeat 0 -205px;
+#header div ul#home-products li a {
+	background: #cdd2d6;
 	color: #5b5c5e;
 	display: block;
 	font-size: 14px;
@@ -107,19 +98,43 @@ p a {
 	text-decoration: none;
 	text-shadow: 1px 1px 0 #e8edf1;
 	text-transform: capitalize;
+	border: 1px solid #6f3f52;
+	width: 471px;
+	margin-left:-3px;
+
 }
-#header div ul li a:hover, #header ul li.current a {
+#header div ul li a:hover {
 	color: #b13c68;
 	text-shadow: 1px 1px 0 #ebb8c7;
 }
-#header div ul li.current a {
-	background: url(../images/sprite-buttons.gif) no-repeat 0 -97px;
+
+#header ul li.current a{
+	color: #b13c68;
+	text-shadow: 1px 1px 0 #ebb8c7;
+	display: inline-block;
+	width: 471px;
+	margin-left: 0;
 }
+#header div ul#home-products li.current a {
+	background: #f7dee1;
+	margin-left: 0;
+}
+
+
 #header div div#section, #header div div.section {
 	background: #aa6581;
 	height: 360px;
 	padding: 10px;
 	width: 940px;
+	margin-top: -19px;
+}
+
+#header div div#section{
+	background: #aa6581;
+	height: 360px;
+	padding: 10px;
+	width: 940px;
+	margin-top: -17px;
 }
 #header div div.section {
 	height: 190px;
@@ -150,6 +165,7 @@ p a {
 	text-align: center;
 	text-shadow: 1px 1px 0 #ad657d, -1px -1px 0 #ad657d, -1px 1px 0 #ad657d, 1px -1px 0 #ad657d;
 	text-transform: lowercase;
+	border: 1px solid #6f3f52;
 
 }
 #header div div#section ul li a:hover, #header div div#section ul li.selected a {
@@ -161,7 +177,15 @@ p a {
 }
 #header div div#section img {
 	float: right;
+
 }
+
+#header div div#section img{
+	margin-top: -9px;
+	margin-right: -11px;
+}
+
+
 #content {
 	background: #f5f5f5;
 	height: auto;
