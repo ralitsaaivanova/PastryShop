@@ -17,12 +17,19 @@
           <span>SIGN-IN</span>
           <table>
             <tr>
-              <td><label for="name">Username</label></td>
-              <td><input type="text" id="name"></td>
+              <td><label for="email">Email</label></td>
+              <td><input type="text"
+                         name="email"
+                         id="email"
+                          class="form-control"
+                        placeholder="Email"></td>
             </tr>
             <tr>
               <td><label for="password">Password</label></td>
-              <td><input type="text" id="password"></td>
+              <td><input type="password"
+                         name="password"
+                         class="form-control"
+                         id="password"></td>
             </tr>
             <tr>
               <td></td>
@@ -31,6 +38,10 @@
                   Remember me on this computer</label></td>
             </tr>
           </table>
+
+          <p th:if="${bad_credentials}" class="errors alert alert-danger">
+            Invalid username or password.
+          </p>
           <input type="submit" value="Sign-In" class="submitbtn">
         </form>
       </div>

@@ -69,9 +69,9 @@
                   Remember me on this computer</label></td>
             </tr>
           </table>
-          <div class="alert alert-danger" role="alert">
-            Invalid input data.
-          </div>
+          <p th:if="${bad_credentials}" class="errors alert alert-danger">
+            Invalid username or password.
+          </p>
           <input type="submit" value="Sign-up" class="submitbtn">
         </form>
       </div>

@@ -1,10 +1,14 @@
 package org.softuni.pastryShop.config;
 
+import org.softuni.pastryShop.repository.UserRepository;
+import org.softuni.pastryShop.service.impl.ShopUserDetailsService;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
+import org.springframework.security.web.DefaultSecurityFilterChain;
 
 @Configuration
 public class SecurityConfiguration {
@@ -12,4 +16,38 @@ public class SecurityConfiguration {
     public PasswordEncoder passwordEncoder(){
         return Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
+
+    @Bean
+    public DefaultSecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+
+        httpSecurity.authorizeHttpRequests(
+                authorizeRequests->authorizeRequests
+                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                        .requestMatchers("/index","/signup","signin").permitAll()
+                        .anyRequest().authenticated()
+        ).formLogin(
+                formLogin->{
+                    formLogin
+                            .loginPage("signin")
+                            .usernameParameter("email")
+                            .passwordParameter("password")
+                            .defaultSuccessUrl("/index")
+                            .failureForwardUrl("/login-error");
+                }
+        ).logout(
+                logout->{
+                    logout.logoutUrl("/logout")
+                            .logoutSuccessUrl("/index")
+                            .invalidateHttpSession(true);
+
+                }
+        );
+        return httpSecurity.build();
+    }
+
+    @Bean
+    public ShopUserDetailsService userDetailsService(UserRepository userRepository){
+        return new ShopUserDetailsService(userRepository);
+    }
+
 }

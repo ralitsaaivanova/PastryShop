@@ -143,6 +143,20 @@ p a {
 	margin-left:0;
 }
 
+#header div ul#all-products li a#not-selected2 {
+	background: #cdd2d6;
+	color: #5b5c5e;
+	display: block;
+	font-size: 14px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #e8edf1;
+	text-transform: capitalize;
+	border: 1px solid #6f3f52;
+	width: 471px;
+	margin-left:-3px;
+}
+
 #header div ul li a:hover {
 	color: #b13c68;
 	text-shadow: 1px 1px 0 #ebb8c7;
