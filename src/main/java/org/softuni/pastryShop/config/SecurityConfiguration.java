@@ -47,6 +47,7 @@ public class SecurityConfiguration {
 
     @Bean
     public ShopUserDetailsService userDetailsService(UserRepository userRepository){
+        //shop users and roles(spring security)
         return new ShopUserDetailsService(userRepository);
     }
 
