@@ -3,6 +3,8 @@ package org.softuni.pastryShop.web;
 import org.softuni.pastryShop.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
 @Controller
 public class UserLogController {
 

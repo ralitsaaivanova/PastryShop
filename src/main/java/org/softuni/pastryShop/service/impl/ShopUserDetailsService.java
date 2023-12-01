@@ -27,12 +27,13 @@ public class ShopUserDetailsService implements UserDetailsService {
         if(user.isEmpty()){
             throw new UsernameNotFoundException("User "+ email +" not found!");
         }
-        return org.springframework.security.core.userdetails.User
+        UserDetails userDetails = org.springframework.security.core.userdetails.User
                 .withUsername(user.get().getEmail())
                 .password(user.get().getPassword())
                 .authorities(List.of())//TODO: add roles
                 .build();
 
+        return userDetails;
     }
 
 }
