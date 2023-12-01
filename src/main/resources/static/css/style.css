@@ -48,6 +48,14 @@ p a {
 	overflow: hidden;
 	width: auto;
 }
+
+#header div div div div form{
+	position: static;
+	right: 0;
+	top: 70px;
+	height: 30px;
+	width: 290px;
+}
 #header div div div div a {
 	border-right: 1px solid #6c404f;
 	color: #6c404f;
@@ -69,6 +77,15 @@ p a {
 	height: 30px;
 	width: 290px;
 }
+
+#header div div div div input form#submitbtn{
+	background: url(../images/sprite-buttons.gif) no-repeat 0 -291px;
+	border: none;
+	height: 30px;
+	width: 60px;
+	margin-top: 7px;
+}
+
 #header div div div form input {
 	float: left;
 	line-height: 30px;

@@ -24,7 +24,7 @@ public class SecurityConfiguration {
         httpSecurity.authorizeHttpRequests(
                 authorizeRequests->authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/index","/signup","/signin").permitAll()
+                        .requestMatchers("/index","/signup","/signin","/login-error","/logout").permitAll()
                         .anyRequest().authenticated()
         ).formLogin(
                 formLogin->{
@@ -38,7 +38,7 @@ public class SecurityConfiguration {
         ).logout(
                 logout->{
                     logout.logoutUrl("/logout")
-                            .logoutSuccessUrl("/index")
+                            .logoutSuccessUrl("/signin")
                             .invalidateHttpSession(true);
 
                 }
