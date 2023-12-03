@@ -581,6 +581,7 @@ div#content div ul#admin-menu li a#not-selected2 {
 	height: 395px;
 	padding: 5px 20px 20px;
 	width: 200px;
+	overflow: scroll;
 }
 #content div.home div.section div h2 {
 	color: #84284d;
@@ -921,6 +922,59 @@ div#content div ul#admin-menu li a#not-selected2 {
 	margin-bottom: 10px;
 }
 
+#content div div#category {
+	background: url(../images/bg-form-top-curve.gif) no-repeat center top;
+	color: #5F5D5E;
+	margin: 60px auto 0;
+	padding: 10px 0 0;
+	width: 420px;
+}
+
+#content div div#category div {
+	background: url(../images/bg-form-bottom-curve.gif) no-repeat center bottom;
+	padding: 0 0 10px;
+	width: auto;
+}
+#content div div#category div form {
+	background: url(../images/bg-form.gif) repeat-y;
+	margin: 0;
+	padding-bottom: 15px;
+}
+#content div div#category div form input {
+	color: #5F5D5E;
+	margin: 0 0 0 10px;
+}
+#content div div#category div form span {
+	color: #84284D;
+	display: block;
+	padding: 15px 10px 10px 15px;
+}
+
+
+
+#content div div#category div form input#name,
+#content div div#category div form input#username{
+	border: 1px solid #e0e0e0;
+	height: 25px;
+	width: 310px;
+}
+
+#content div div#category div form{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#content div div#category div form span{
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+
 
 
 
@@ -965,6 +1019,19 @@ div#content div ul#admin-menu li a#not-selected2 {
 	text-transform: uppercase;
 	width: 90px;
 }
+
+#content div div#category div form input.submitbtn {
+	background: url(../images/sprite-buttons.gif) no-repeat 0 -376px;
+	color: #84284D;
+	border: 0;
+	height: 25px;
+	font-size: 11px;
+	margin-left: 300px;
+	margin-top: 10px;
+	text-transform: uppercase;
+	width: 90px;
+}
+
 #footer {
 	background: #703f54;
 	width: 100%;

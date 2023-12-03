@@ -12,70 +12,27 @@
 
 <div id="content">
     <div>
-        <div id="product">
+        <div id="category">
             <div>
                 <!---------Registration form start----->
-                <form th:action="@{/addProduct}"
+                <form th:action="@{/addCategory}"
                       th:method="POST"
-                      th:object="${productDTO}">
+                      th:object="${categoryDTO}">
                     <span>Add Category</span>
                     <table>
                         <tr>
-                            <td><label for="name">Product Name</label></td>
+                            <td><label for="name">Category Name</label></td>
                             <td><input type="text" id="name" name="name"></td>
                         </tr>
                         <tr>
-                            <td><label for="price">Price</label></td>
-                            <td><input type="number" id="price" name="price"
-                                       min="0" max="1000" step="0.01"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="currencies">Currency</label></td>
-                            <td><select id="currencies" name="currencies">
-                                <option> </option>
-                                <option value="BGN">lv</option>
-                                <option value="EUR">euro</option>
-                            </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="weight">Weight</label></td>
-                            <td><input type="number" id="weight" name="weight"
-                                       min="0" max="1000" step="0.01"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="measures">Measure</label></td>
-                            <td><select id="measures" name="measures">
-                                <option> </option>
-                                <option value="grams">g</option>
-                                <option value="kilograms">kg</option>
-                            </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="categories">Category</label></td>
-                            <td><select id="categories" name="categories">
-                                <option> </option>
-                                <option value="cheesecake">Cheesecake</option>
-                                <option value="cakes without chocolate">Cakes without Chocolate</option>
-                                <option value="chocolate cakes">Chocolate cakes</option>
-                                <option value="cupcakes">Cupcakes</option>
-                                <option value="sweets">Sweets</option>
-                            </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="photo">Photo</label></td>
-                            <td>
-                                <input type="" name="photo" id="photo">
-                            </td>
+                            <td><label for="username">Username</label></td>
+                            <td><input type="text" id="username" name="user"></td>
                         </tr>
 
                     </table>
-                    <input type="submit" value="Add Product" class="submitbtn">
+                    <input type="submit" value="Add Category" class="submitbtn">
                 </form>
             </div>
-            <!---------Registration form start----->
         </div>
     </div>
 </div>
