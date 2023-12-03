@@ -14,6 +14,7 @@
       <div>
         <div> <a sec:authorize="isAuthenticated()" href="/account">My Account</a><a sec:authorize="!isAuthenticated()" href="/signup">Sign up</a> <a sec:authorize="!isAuthenticated()" href="/signin">Sign in</a>
 
+
           <p id="hello">Welcome,
             <th:block sec:authorize="isAuthenticated()">
               <th:block sec:authentication="name"></th:block>

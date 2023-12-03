@@ -1,9 +1,109 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head}">
 </head>
+
+
+
 <body>
-    <h2>Hello to my Account!</h2>
+<div id="header" th:replace="~{fragments/header-navbar}">
+</div>
+
+
+<div id="content">
+    <div>
+        <h1>Cheesecakes</h1>
+        <ul sec:authorize="hasRole('ADMIN')" id="admin-menu">
+            <li><a id="not-selected" href="/index">Home</a></li>
+            <li><a id="not-selected2" href="/product">The Pastry shop</a></li>
+        </ul>
+        <ul>
+            <li>
+                <div>
+                    <div>
+                        <h2><a href="#">Cheesecake</a></h2>
+                        <p></p>
+                        <a href="#" class="view">view all</a> </div>
+                    <a href="#"><img src="images/special-treats.jpg" alt=""></a> </div>
+            </li>
+            <li>
+                <div>
+                    <div>
+                        <h2><a href="#">Tarts</a></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
+                        <a href="#" class="view">view all</a> </div>
+                    <a href="#"><img src="images/tarts.jpg" alt=""></a> </div>
+            </li>
+            <li>
+                <div>
+                    <div>
+                        <h2><a href="#">Cakes</a></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
+                        <a href="#" class="view">view all</a> </div>
+                    <a href="#"><img src="images/cakes.jpg" alt=""></a> </div>
+            </li>
+            <li>
+                <div>
+                    <div>
+                        <h2><a href="#">Desserts</a></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
+                        <a href="#" class="view">view all</a> </div>
+                    <a href="#"><img src="images/dessert.jpg" alt=""></a> </div>
+            </li>
+            <li>
+                <div>
+                    <div>
+                        <h2><a href="#">Pastries</a></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
+                        <a href="#" class="view">view all</a> </div>
+                    <a href="#"><img src="images/pastries.jpg" alt=""></a> </div>
+            </li>
+            <li>
+                <div>
+                    <div>
+                        <h2><a href="#">Healthy Food</a></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
+                        <a href="#" class="view">view all</a> </div>
+                    <a href="#"><img src="images/healthy-food.jpg" alt=""></a> </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="footer">
+    <div id="featured">
+        <ul>
+            <li class="first"> <a href="#"><img src="images/fruit-cake.jpg" alt=""></a>
+                <h2><a href="#">Tips on how to preserve</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adispiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. <a href="#" class="readmore">read more</a></p>
+            </li>
+            <li> <a href="#"><img src="images/italian.jpg" alt=""></a>
+                <h2><a href="#">Menu of the day: Italian</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adispiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. <a href="#" class="readmore">read more</a></p>
+            </li>
+            <li> <a href="#"><img src="images/fruit.jpg" alt=""></a>
+                <h2><a href="#">Fruit menu for your diet</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adispiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. <a href="#" class="readmore">read more</a></p>
+            </li>
+            <li> <a href="#"><img src="images/desserts.jpg" alt=""></a>
+                <h2><a href="#">Desserts for every occassion</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adispiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. <a href="#" class="readmore">read more</a></p>
+            </li>
+        </ul>
+    </div>
+    <div id="navigation">
+        <div>
+            <ul>
+                <li class="first"><a href="#">help</a></li>
+                <li><a href="#">about cake delight</a></li>
+                <li><a href="#">cake delight talk</a></li>
+                <li><a href="#">developers</a></li>
+                <li><a href="#">privacy policy</a></li>
+                <li><a href="#">terms of use</a></li>
+            </ul>
+            <p>Copyright &copy; 2012 <a href="#">Domain Name</a> All rights reserved | Website Template By <a target="_blank" href="http://www.freewebsitetemplates.com/">freewebsitetemplates.com</a></p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
