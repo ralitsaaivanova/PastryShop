@@ -22,7 +22,8 @@
               Anonymous!
             </th:block>
           </p>
-          <form th:method="POST"
+          <form sec:authorize="isAuthenticated()"
+                  th:method="POST"
                 th:action="@{/logout}">
             <input type="submit" value="Logout" id="submitbtn">
           </form> </div>
