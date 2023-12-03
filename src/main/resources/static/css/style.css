@@ -174,6 +174,63 @@ p a {
 	margin-left:-3px;
 }
 
+div#content div ul#admin-menu{
+	list-style: none;
+	overflow: hidden;
+	padding: 0;
+	margin-left: 11px;
+	display: flex;
+
+}
+
+div#content div ul#admin-menu li a {
+	background: #cdd2d6;
+	color: #5b5c5e;
+	display: block;
+	font-size: 14px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #e8edf1;
+	text-transform: capitalize;
+	border: 1px solid #6f3f52;
+	width: 471px;
+	margin-left:-3px;
+
+}
+
+div#content div ul#admin-menu li a#not-selected {
+	background: #fff0f5;
+	color: #5b5c5e;
+	display: block;
+	font-size: 14px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #e8edf1;
+	text-transform: capitalize;
+	border: 1px solid #6f3f52;
+	border-radius: 30px;
+	width: 300px;
+	margin-left:85px;
+	padding: 20px;
+}
+
+div#content div ul#admin-menu li a#not-selected2 {
+	background: #fff0f5;
+	color: #5b5c5e;
+	display: block;
+	font-size: 14px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #e8edf1;
+	text-transform: capitalize;
+	border: 1px solid #6f3f52;
+	border-radius: 30px;
+	width: 300px;
+	margin-left:-3px;
+	padding: 20px;
+}
+
+
 #header div ul li a:hover {
 	color: #b13c68;
 	text-shadow: 1px 1px 0 #ebb8c7;

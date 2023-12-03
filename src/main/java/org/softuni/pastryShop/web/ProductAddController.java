@@ -9,4 +9,9 @@ public class ProductAddController {
     public String addProduct(){
         return "addProduct";
     }
+
+    @GetMapping("addCategory")
+    public String addCategory(){
+        return "addCategory";
+    }
 }
