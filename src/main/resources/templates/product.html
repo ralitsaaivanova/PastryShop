@@ -5,69 +5,86 @@
 </head>
 
 
-
 <body>
-<div id="header" >
-  <div>
+<div id="header">
     <div>
-      <div id="logo"> <a href="#"><img src="images/logo.gif" alt=""></a> </div>
-      <div>
-        <div> <a sec:authorize="isAuthenticated()" href="/account">My Account</a><a sec:authorize="!isAuthenticated()" href="/signup">Sign up</a> <a sec:authorize="!isAuthenticated()" href="/signin">Sign in</a>
+        <div>
+            <div id="logo"><a href="#"><img src="images/logo.gif" alt=""></a></div>
+            <div>
+                <div>
+                    <a sec:authorize="isAuthenticated()" href="/account">My Account</a>
+                    <div sec:authorize="!isAuthenticated()" class="sign-buttons-container" id="sign-buttons-container">
+                        <a href="/signup">Sign up</a>
+                        <a href="/signin">Sign in</a>
+                    </div>
 
-          <p id="hello">Welcome,
-              <th:block sec:authorize="isAuthenticated()">
-                <th:block sec:authentication="name"></th:block>
-              </th:block>
-            <th:block sec:authorize="!isAuthenticated()">
-              Anonymous!
-            </th:block>
-          </p>
-          <form sec:authorize="isAuthenticated()"
-                  th:method="POST"
-                th:action="@{/logout}">
-            <input type="submit" value="Logout" id="submitbtn">
-          </form> </div>
-      </div>
+
+                    <p sec:authorize="!isAuthenticated()" id="hello">Welcome,
+                        <th:block sec:authorize="isAuthenticated()">
+                            <th:block sec:authentication="name"></th:block>
+                        </th:block>
+                        <th:block sec:authorize="!isAuthenticated()">
+                            Anonymous!
+                        </th:block>
+                    </p>
+
+                    <p sec:authorize="isAuthenticated()" id="index-hello">Welcome,
+                        <th:block sec:authorize="isAuthenticated()">
+                            <th:block sec:authentication="name"></th:block>
+                        </th:block>
+                        <th:block sec:authorize="!isAuthenticated()">
+                            Anonymous!
+                        </th:block>
+                    </p>
+
+
+                    <form sec:authorize="isAuthenticated()"
+                          th:method="POST"
+                          th:action="@{/logout}">
+                        <input type="submit" value="Logout" id="submitbtn">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <ul id="all-products">
+            <li><a href="/index">Home</a></li>
+            <li class="current"><a href="/product">The Pastry shop</a></li>
+        </ul>
+        <div class="section"><a href="/cupcakes"><img src="images/wedding-cupcakes-small.jpg" alt=""></a></div>
     </div>
-    <ul id="all-products">
-      <li><a href="/index">Home</a></li>
-      <li class="current"><a href="/product">The Pastry shop</a></li>
-    </ul>
-    <div class="section"> <a href="/cupcakes"><img src="images/wedding-cupcakes-small.jpg" alt=""></a> </div>
-  </div>
 </div>
 </body>
 
 <div id="content">
-  <div>
-    <h1>The Pastry shop</h1>
-    <ul>
-      <li>
-        <div>
-          <div>
-            <h2><a href="#">Име на продукта</a></h2>
-            <p>19лв</p>
-            <a href="#" class="view">Add</a> </div>
-          <a href="#"><img src="images/special-treats.jpg" alt=""></a> </div>
-      </li>
-      <li>
-        <div>
-          <div>
-            <h2><a href="#">Tarts</a></h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
-            <a href="#" class="view">view all</a> </div>
-          <a href="#"><img src="images/tarts.jpg" alt=""></a> </div>
-      </li>
-      <li>
-        <div>
-          <div>
-            <h2><a href="#">Tarts</a></h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
-            <a href="#" class="view">view all</a> </div>
-          <a href="#"><img src="images/tarts.jpg" alt=""></a> </div>
-      </li>
-    </ul>
-  </div>
+    <div>
+        <h1>The Pastry shop</h1>
+        <ul>
+            <li>
+                <div>
+                    <div>
+                        <h2><a href="#">Име на продукта</a></h2>
+                        <p>19лв</p>
+                        <a href="#" class="view">Add</a></div>
+                    <a href="#"><img src="images/special-treats.jpg" alt=""></a></div>
+            </li>
+            <li>
+                <div>
+                    <div>
+                        <h2><a href="#">Tarts</a></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
+                        <a href="#" class="view">view all</a></div>
+                    <a href="#"><img src="images/tarts.jpg" alt=""></a></div>
+            </li>
+            <li>
+                <div>
+                    <div>
+                        <h2><a href="#">Tarts</a></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
+                        <a href="#" class="view">view all</a></div>
+                    <a href="#"><img src="images/tarts.jpg" alt=""></a></div>
+            </li>
+        </ul>
+    </div>
 </div>
 <div id="footer" th:replace="~{fragments/footer}">
 </div>

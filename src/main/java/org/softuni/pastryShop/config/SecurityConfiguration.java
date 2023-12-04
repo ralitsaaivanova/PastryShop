@@ -10,11 +10,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.DefaultSecurityFilterChain;
+
 @EnableMethodSecurity
 @Configuration
 public class SecurityConfiguration {
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
 
@@ -22,13 +23,14 @@ public class SecurityConfiguration {
     public DefaultSecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity.authorizeHttpRequests(
-                authorizeRequests->authorizeRequests
+                authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/index","/signup","/signin","/login-error","/logout").permitAll()
-                        .requestMatchers("/product").permitAll()
+                        .requestMatchers("/index", "/signup", "/signin", "/login-error", "/logout").permitAll()
+                        .requestMatchers("/product","/cakeswithoutchocolate","/cheesecakes","/chocolatecakes").permitAll()
+                        .requestMatchers("cupcakes").permitAll()
                         .anyRequest().authenticated()
         ).formLogin(
-                formLogin->{
+                formLogin -> {
                     formLogin
                             .loginPage("/signin")
                             .usernameParameter("email")
@@ -37,7 +39,7 @@ public class SecurityConfiguration {
                             .failureForwardUrl("/login-error");
                 }
         ).logout(
-                logout->{
+                logout -> {
                     logout.logoutUrl("/logout")
                             .logoutSuccessUrl("/signin")
                             .invalidateHttpSession(true);
@@ -48,7 +50,7 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public ShopUserDetailsService userDetailsService(UserRepository userRepository){
+    public ShopUserDetailsService userDetailsService(UserRepository userRepository) {
         //shop users and roles(spring security)
         return new ShopUserDetailsService(userRepository);
     }

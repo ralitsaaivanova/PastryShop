@@ -5,67 +5,92 @@
 </head>
 
 
-
 <body>
 <div id="header">
-  <div>
     <div>
-      <div id="logo"> <a href="#"><img src="images/logo.gif" alt=""></a> </div>
-      <div>
-        <div> <a sec:authorize="isAuthenticated()" href="/account">My Account</a><a sec:authorize="!isAuthenticated()" href="/signup">Sign up</a> <a sec:authorize="!isAuthenticated()" href="/signin">Sign in</a>
+        <div>
+            <div id="logo"><a href="#"><img src="images/logo.gif" alt=""></a></div>
+            <div>
+                <div>
+                    <a sec:authorize="isAuthenticated()" href="/account">My Account</a>
+                    <div sec:authorize="!isAuthenticated()" class="sign-buttons-container" id="sign-buttons-container">
+                        <a href="/signup">Sign up</a>
+                        <a href="/signin">Sign in</a>
+                    </div>
 
 
-          <p id="hello">Welcome,
-            <th:block sec:authorize="isAuthenticated()">
-              <th:block sec:authentication="name"></th:block>
-            </th:block>
-            <th:block sec:authorize="!isAuthenticated()">
-              Anonymous!
-            </th:block>
-          </p>
-          <form sec:authorize="isAuthenticated()"
-                  th:method="POST"
-                th:action="@{/logout}">
-            <input type="submit" value="Logout" id="submitbtn">
-          </form> </div>
-      </div>
+                    <p sec:authorize="!isAuthenticated()" id="hello">Welcome,
+                        <th:block sec:authorize="isAuthenticated()">
+                            <th:block sec:authentication="name"></th:block>
+                        </th:block>
+                        <th:block sec:authorize="!isAuthenticated()">
+                            Anonymous!
+                        </th:block>
+                    </p>
+
+                    <p sec:authorize="isAuthenticated()" id="index-hello">Welcome,
+                        <th:block sec:authorize="isAuthenticated()">
+                            <th:block sec:authentication="name"></th:block>
+                        </th:block>
+                        <th:block sec:authorize="!isAuthenticated()">
+                            Anonymous!
+                        </th:block>
+                    </p>
+
+
+                    <form sec:authorize="isAuthenticated()"
+                          th:method="POST"
+                          th:action="@{/logout}">
+                        <input type="submit" value="Logout" id="submitbtn">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <ul id="home-products">
+            <li class="current"><a href="/index">Home</a></li>
+            <li><a href="/product">The Pastry shop</a></li>
+        </ul>
+
+        <div id="section">
+            <ul>
+                <li><a href="/cheesecakes">Cheesecakes</a></li>
+                <li><a href="/cakeswithoutchocolate">Cakes without chocolate</a></li>
+                <li><a href="/chocolatecakes">Chocolate cakes</a></li>
+                <li><a href="/cupcakes">Cupcakes</a></li>
+                <li><a href="/sweets">Sweets</a></li>
+            </ul>
+            <a href="/cupcakes"><img src="images/wedding-cupcakes-large.jpg" alt=""></a></div>
     </div>
-    <ul id="home-products">
-      <li class="current"><a href="/index">Home</a></li>
-      <li><a href="/product">The Pastry shop</a></li>
-    </ul>
-
-    <div id="section">
-      <ul>
-        <li><a href="/cheesecakes">Cheesecakes</a></li>
-        <li><a href="/cakeswithoutchocolate">Cakes without chocolate</a></li>
-        <li><a href="/chocolatecakes">Chocolate cakes</a></li>
-        <li ><a href="/cupcakes">Cupcakes</a></li>
-        <li><a href="/sweets">Sweets</a></li>
-      </ul>
-      <a href="/cupcakes"><img src="images/wedding-cupcakes-large.jpg" alt=""></a> </div>
-  </div>
 </div>
 <div id="content">
-  <div class="home">
-    <div class="aside">
-      <h1>Welcome to our site</h1>
-      <p>Pastry is the name given to various kinds of baked goods made from ingredients such as flour, butter, shortening, baking powder or eggs. Small cakes, tarts and other sweet baked goods are called &#34;pastries&#34;.</p>
-      <p>Pastry may also refer to the dough from which such baked goods are made. Pastry dough is rolled out thinly and used as a base for baked goods. Common pastry dishes include pies, tarts and quiches.
-      <p>Pastry is distinguished from bread by having a higher fat content, which contributes to a flaky or crumbly texture. A good pastry is light and airy and fatty, but firm enough to support the weight of the filling. When making a shortcrust pastry, care must be taken to blend the fat and flour thoroughly before adding. <a href="#" class="readmore">read more</a></p>
+    <div class="home">
+        <div class="aside">
+            <h1>Welcome to our site</h1>
+            <p>Pastry is the name given to various kinds of baked goods made from ingredients such as flour, butter,
+                shortening, baking powder or eggs. Small cakes, tarts and other sweet baked goods are called &#34;pastries&#34;.</p>
+            <p>Pastry may also refer to the dough from which such baked goods are made. Pastry dough is rolled out
+                thinly and used as a base for baked goods. Common pastry dishes include pies, tarts and quiches.
+            <p>Pastry is distinguished from bread by having a higher fat content, which contributes to a flaky or
+                crumbly texture. A good pastry is light and airy and fatty, but firm enough to support the weight of the
+                filling. When making a shortcrust pastry, care must be taken to blend the fat and flour thoroughly
+                before adding. <a href="#" class="readmore">read more</a></p>
+        </div>
+        <div class="section">
+            <div>
+                <h2>The food story</h2>
+                <p> Baked goods have been around for thousands of years. The art of baking was developed early during
+                    the Roman Empire. It was highly famous art as Roman citizens loved baked goods and demanded them
+                    frequently for important occasions such as feasts and weddings. Because of the fame of the art of
+                    baking, around 300 BC, baking was introduced as an occupation and respectable profession for
+                    Romans.</p>
+            </div>
+            <ul>
+                <li class="first"><a href="#"><img src="images/cake.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/burgercake.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/cupcake.jpg" alt=""></a></li>
+            </ul>
+        </div>
     </div>
-    <div class="section">
-      <div>
-        <h2>The food story</h2>
-        <p> Baked goods have been around for thousands of years. The art of baking was developed early during the Roman Empire. It was highly famous art as Roman citizens loved baked goods and demanded them frequently for important occasions such as feasts and weddings. Because of the fame of the art of baking, around 300 BC, baking was introduced as an occupation and respectable profession for Romans.</p>
-      </div>
-      <ul>
-        <li class="first"> <a href="#"><img src="images/cake.jpg" alt=""></a> </li>
-        <li> <a href="#"><img src="images/burgercake.jpg" alt=""></a> </li>
-        <li> <a href="#"><img src="images/cupcake.jpg" alt=""></a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 
 <div id="footer" th:replace="~{fragments/footer}">

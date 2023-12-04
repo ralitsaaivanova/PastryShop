@@ -39,7 +39,9 @@ p a {
 	width: auto;
 }
 #header div div div div {
-	display: block;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
 	float: none;
 	height: auto;
 	padding-bottom: 40px;
@@ -55,6 +57,9 @@ p a {
 	top: 70px;
 	height: 30px;
 	width: 290px;
+	margin-right: -74.5%;
+	margin-top: -10px;
+
 }
 #header div div div div a {
 	border-right: 1px solid #6c404f;
@@ -65,6 +70,7 @@ p a {
 	line-height: 13px;
 	padding: 0 5px;
 	text-decoration: none;
+	margin-right: 7px;
 }
 #header div div div div a.last {
 	border: 0;
@@ -1278,3 +1284,25 @@ div#content div ul#admin-menu li a#not-selected2 {
 	padding: 0;
 	width: auto;
 }
+
+#sign-buttons-container.sign-buttons-container{
+	margin-right: 10px;
+	flex-direction: row;
+}
+
+#hello{
+	margin-top: -28px;
+	margin-right:8px;
+}
+
+#header div div div div div{
+	margin-right: 10px;
+}
+
+.hello{
+	margin-top: -10px !important;
+}
+#index-hello{
+	margin-right: 8px;
+}
+

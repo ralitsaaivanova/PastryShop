@@ -12,6 +12,7 @@ public class Product extends BaseEntity{
     private String name;
     private Double price;
     private Double weight;
+    @Lob
     private byte[] photo;
 
     @ManyToOne

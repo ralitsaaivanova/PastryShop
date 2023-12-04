@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
 <head th:replace="~{fragments/head}">
 </head>
 <body>
@@ -7,77 +7,82 @@
 </div>
 
 
-
-
 <div id="content">
-  <div>
-    <div id="account">
-      <div>
-        <!---------Registration form start----->
-        <form th:action="@{/signup}"
-              th:method="POST"
-              th:object="${userRegistrationDTO}">
-          <span>SIGN-UP</span>
-          <table>
-            <tr>
-              <td><label for="email">E-mail</label></td>
-              <td><input type="text"
-                         class="form-control"
-                             id="email"
-                             name="email"
-                             placeholder="E-mail"/>
-              </td>
-            </tr>
-            <tr>
-              <td><label for="username">Username</label></td>
-              <td><input type="text"
-                         class="form-control"
-                         id="username"
-                         name="username"
-                         placeholder="Username"
-              ></td>
-            </tr>
-            <tr>
-              <td><label for="roles">Role</label></td>
-              <td><select id="roles" name="role" class="form-control">
-                <option></option>
-                <option value="BUYER">Buyer</option>
-                <option value="SELLER">Seller</option>
-              </select>
-              </td>
-            </tr>
-            <tr>
-              <td><label for="password">Password</label></td>
-              <td>
-                  <input type="password"
-                         class="form-control"
-                         name="password"
-                         id="password">
-              </td>
-            </tr>
-            <tr>
-              <td><label for="confirmpass">Confirm<br>
-                  Password</label></td>
-              <td><input type="password"
-                         class="form-control"
-                         id="confirmpass"></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td class="rememberme"><label for="rememberme">
-                  <input type="checkbox" id="rememberme">
-                  Remember me on this computer</label></td>
-            </tr>
-          </table>
-          <p th:if="${bad_credentials}" class="errors alert alert-danger">
-            Invalid username or password.
-          </p>
-          <input type="submit" value="Sign-up" class="submitbtn">
-        </form>
-      </div>
-      <!---------Registration form start----->
+    <div>
+        <div id="account">
+            <div>
+                <!---------Registration form start----->
+                <form th:action="@{/signup}"
+                      th:method="POST"
+                      th:object="${userRegistrationDTO}">
+                    <span>SIGN-UP</span>
+                    <table>
+                        <tr>
+                            <td><label for="email">E-mail</label></td>
+                            <td><input type="text"
+                                       class="form-control"
+                                       id="email"
+                                       name="email"
+                                       placeholder="E-mail"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="username">Username</label></td>
+                            <td>
+                                <input type="text"
+                                       class="form-control"
+                                       id="username"
+                                       name="username"
+                                       placeholder="Username"/>
+<!--                                       th:field="*{username}"-->
+<!--                                       th:errorclass="bg-danger"/>-->
+
+<!--                                <small th:if="${#fields.hasErrors('username')}"-->
+<!--                                       th:errors="*{username}" class="text-danger">Email error message-->
+<!--                                </small>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="roles">Role</label></td>
+                            <td><select id="roles" name="role" class="form-control">
+                                <option></option>
+                                <option value="BUYER">Buyer</option>
+                                <option value="SELLER">Seller</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="password">Password</label></td>
+                            <td>
+                                <input type="password"
+                                       class="form-control"
+                                       name="password"
+                                       id="password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="confirmpass">Confirm<br>
+                                Password</label></td>
+                            <td><input type="password"
+                                       class="form-control"
+                                       id="confirmpass"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="rememberme"><label for="rememberme">
+                                <input type="checkbox" id="rememberme">
+                                Remember me on this computer</label></td>
+                        </tr>
+                    </table>
+                    <p th:if="${bad_credentials}" class="errors alert alert-danger">
+                        Invalid username or password.
+                    </p>
+                    <input type="submit" value="Sign-up" class="submitbtn">
+                </form>
+            </div>
+            <!---------Registration form start----->
+        </div>
     </div>
-  </div>
 </div>
 
 <div id="footer" th:replace="~{fragments/footer}">

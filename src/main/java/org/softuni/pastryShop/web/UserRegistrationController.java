@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.softuni.pastryShop.model.dto.UserRegistrationDTO;
 import org.softuni.pastryShop.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,14 +20,20 @@ public class UserRegistrationController {
     }
 
     @GetMapping("/signup")
-    public String register(){
-        return "signup";
+    public ModelAndView register(){
+        return new ModelAndView("signup");
     }
 
 
     @PostMapping("/signup")
-    public String signup(@Valid UserRegistrationDTO userRegistrationDTO) {
+    public String signup(@Valid UserRegistrationDTO userRegistrationDTO, BindingResult bindingResult) {
         userService.registerUser(userRegistrationDTO);
+//
+//        if (!bindingResult.hasErrors()) {
+//            userService.registerUser(userRegistrationDTO);
+//            return "redirect:/signin";
+//        }
+
         return "redirect:/signin";
     }
 
