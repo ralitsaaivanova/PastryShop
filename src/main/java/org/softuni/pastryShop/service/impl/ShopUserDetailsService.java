@@ -18,7 +18,7 @@ public class ShopUserDetailsService implements UserDetailsService {
 
     public ShopUserDetailsService(UserRepository userRepository) {
 
-        this.userRepository=userRepository;
+        this.userRepository = userRepository;
 
     }
 
@@ -30,8 +30,8 @@ public class ShopUserDetailsService implements UserDetailsService {
 
 
         //check if user is found
-        if(user.isEmpty()){
-            throw new UsernameNotFoundException("User "+ email +" not found!");
+        if (user.isEmpty()) {
+            throw new UsernameNotFoundException("User " + email + " not found!");
         }
         UserDetails userDetails = org.springframework.security.core.userdetails.User
                 .withUsername(user.get().getEmail())
@@ -42,7 +42,7 @@ public class ShopUserDetailsService implements UserDetailsService {
         return userDetails;
     }
 
-    private GrantedAuthority userRole (Role role){
+    private GrantedAuthority userRole(Role role) {
         return new SimpleGrantedAuthority(
                 "ROLE_" + role.name());
     }

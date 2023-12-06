@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head th:replace="~{fragments/head}">
 </head>
 
@@ -16,57 +16,87 @@
                 <!---------Registration form start----->
                 <form th:action="@{/addProduct}"
                       th:method="POST"
-                      th:object="${productDTO}">
+                      th:object="${productDTO}"
+                      enctype="multipart/form-data">
                     <span>Add Product</span>
                     <table>
                         <tr>
                             <td><label for="name">Product Name</label></td>
-                            <td><input type="text" id="name" name="name"></td>
+                            <td><input type="text"
+                                       id="name"
+                                       name="name"
+                                       class="form-control"></td>
                         </tr>
                         <tr>
                             <td><label for="price">Price</label></td>
-                            <td><input type="number" id="price" name="price"
-                                       min="0" max="1000" step="0.01"></td>
+                            <td><input type="number"
+                                       id="price"
+                                       name="price"
+                                       min="0"
+                                       max="1000"
+                                       step="0.01"
+                                       class="form-control"></td>
                         </tr>
                         <tr>
-                            <td><label for="currencies">Currency</label></td>
-                            <td><select id="currencies" name="currencies">
-                                <option></option>
-                                <option value="BGN">lv</option>
-                                <option value="EUR">euro</option>
+                            <td><label for="currencyId">Currency</label></td>
+                            <td><select id="currencyId"
+                                        name="currencyId"
+                                        class="form-control">
+                                <option value="">-Select currency-</option>
+                                <option th:each="currency: ${currencies}"
+                                        th:text="${currency.getName()}"
+                                        th:value="${currency.getId()}"
+                                        th:selected="*{currencyId} == ${currency.getId()}">
+
+                                </option>
                             </select>
                             </td>
                         </tr>
                         <tr>
                             <td><label for="weight">Weight</label></td>
-                            <td><input type="number" id="weight" name="weight"
-                                       min="0" max="1000" step="0.01"></td>
+                            <td><input type="number"
+                                       id="weight"
+                                       name="weight"
+                                       min="0"
+                                       max="1000"
+                                       step="0.01"></td>
                         </tr>
                         <tr>
-                            <td><label for="measures">Measure</label></td>
-                            <td><select id="measures" name="measures">
-                                <option></option>
-                                <option value="grams">g</option>
-                                <option value="kilograms">kg</option>
+                            <td><label for="measureId">Measure</label></td>
+                            <td><select id="measureId"
+                                        name="measureId"
+                                        class="form-control">
+                                <option value="">- Select measure-</option>
+                                <option
+                                        th:each="measure:${measures}"
+                                        th:value="${measure.getId()}"
+                                        th:text="${measure.getName()}"
+                                        th:selected="*{measureId} == ${measure.getId()}"></option>
                             </select>
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="categories">Category</label></td>
-                            <td><select id="categories" name="categories">
-                                <option></option>
-                                <option value="cheesecake">Cheesecake</option>
-                                <option value="cakes without chocolate">Cakes without Chocolate</option>
-                                <option value="chocolate cakes">Chocolate cakes</option>
-                                <option value="cupcakes">Cupcakes</option>
-                                <option value="sweets">Sweets</option>
+                            <td><label for="categoryId">Category</label></td>
+                            <td><select id="categoryId"
+                                        name="categoryId"
+                                        class="form-control">
+                                <option value="">- Select a category-</option>
+                                <option
+                                        th:each="category:${categories}"
+                                        th:value="${category.getId()}"
+                                        th:text="${category.getName()}"
+                                        th:selected="*{categoryId} == ${category.getId()}"></option>
                             </select>
                             </td>
                         </tr>
                         <tr>
                             <td><label for="image">Photo</label></td>
                             <td>
-                                <input type="image" class="form-control" name="photo" id="image">
+                                <input type="file"
+                                       class="form-control"
+                                       name="photo"
+                                       accept="image/*"
+                                       id="image">
                             </td>
                         </tr>
 

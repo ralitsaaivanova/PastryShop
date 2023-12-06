@@ -6,13 +6,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
-public class Product extends BaseEntity{
+public class Product extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
     private Double price;
     private Double weight;
     @Lob
+    @Column(columnDefinition = "LONGBLOB")
     private byte[] photo;
 
     @ManyToOne

@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.passwordEncoder=passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    private User map(UserRegistrationDTO userRegistrationDTO){
+    private User map(UserRegistrationDTO userRegistrationDTO) {
         String userRole = String.valueOf(userRegistrationDTO.role());
         return new User()
                 .setEmail(userRegistrationDTO.email())

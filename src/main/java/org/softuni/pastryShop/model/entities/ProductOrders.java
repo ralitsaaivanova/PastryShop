@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "products_orders")
-public class ProductOrders extends BaseEntity{
+public class ProductOrders extends BaseEntity {
 
     @OneToOne
     private Product product;

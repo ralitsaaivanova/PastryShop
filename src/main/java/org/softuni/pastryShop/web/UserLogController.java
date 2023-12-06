@@ -16,7 +16,7 @@ public class UserLogController {
 
 
     @GetMapping("/signin")
-    public String login(){
+    public String login() {
         return "signin";
     }
 }

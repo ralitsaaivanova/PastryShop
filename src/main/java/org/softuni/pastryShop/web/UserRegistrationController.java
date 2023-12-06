@@ -20,7 +20,7 @@ public class UserRegistrationController {
     }
 
     @GetMapping("/signup")
-    public ModelAndView register(){
+    public ModelAndView register() {
         return new ModelAndView("signup");
     }
 

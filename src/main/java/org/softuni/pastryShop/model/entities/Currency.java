@@ -3,11 +3,13 @@ package org.softuni.pastryShop.model.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="currencies")
-public class Currency extends BaseEntity{
+@Table(name = "currencies")
+public class Currency extends BaseEntity {
     private String name;
     private String shortName;
     private Double conversionRate;
+
+    private boolean isDefault;
 
     public String getName() {
         return name;
@@ -31,5 +33,13 @@ public class Currency extends BaseEntity{
 
     public void setConversionRate(Double conversionRate) {
         this.conversionRate = conversionRate;
+    }
+
+    public boolean isDefault() {
+        return isDefault;
+    }
+
+    public void setDefault(boolean aDefault) {
+        isDefault = aDefault;
     }
 }
