@@ -53,13 +53,13 @@
 
         <div id="section">
             <ul>
-                <li><a href="/cheesecakes">Cheesecakes</a></li>
-                <li><a href="/cakeswithoutchocolate">Cakes without chocolate</a></li>
-                <li><a href="/chocolatecakes">Chocolate cakes</a></li>
-                <li><a href="/cupcakes">Cupcakes</a></li>
-                <li><a href="/sweets">Sweets</a></li>
+                <li th:each="category:${categories}"
+                    th:value="${category.getId()}">
+                    <a th:href="@{/category/{id}(id=${category.getId()})}"
+                       th:text="${category.getName()}"></a>
+                </li>
             </ul>
-            <a href="/cupcakes"><img src="images/wedding-cupcakes-large.jpg" alt=""></a></div>
+            <a th:href="@{/category/4}"><img src="images/wedding-cupcakes-large.jpg" alt=""></a></div>
     </div>
 </div>
 <div id="content">

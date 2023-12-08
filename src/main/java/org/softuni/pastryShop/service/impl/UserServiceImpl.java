@@ -26,10 +26,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(map(userRegistrationDTO));
     }
 
-    @Override
-    public Authentication login(String email) {
-        return null;
-    }
+
 
     private User map(UserRegistrationDTO userRegistrationDTO) {
         String userRole = String.valueOf(userRegistrationDTO.role());

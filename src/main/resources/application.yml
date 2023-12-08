@@ -44,4 +44,7 @@ server:
   port: 7070
 debug: true
 
+pastryShop:
+  remember.me.key: ${REMEBER_ME_KEY:topsecret}
+
 defaul.admin.pass: ${DEFAULT_ADMIN_PASS:secret}

@@ -2,6 +2,7 @@ package org.softuni.pastryShop.config;
 
 import org.softuni.pastryShop.repository.UserRepository;
 import org.softuni.pastryShop.service.impl.ShopUserDetailsService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +15,18 @@ import org.springframework.security.web.DefaultSecurityFilterChain;
 @EnableMethodSecurity
 @Configuration
 public class SecurityConfiguration {
+
+    private final String rememberMeKey;
+    public SecurityConfiguration(@Value("${pastryShop.remember.me.key}") String rememberMeKey) {
+        this.rememberMeKey = rememberMeKey;
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
+
+
 
     @Bean
     public DefaultSecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
@@ -26,8 +35,8 @@ public class SecurityConfiguration {
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/index", "/signup", "/signin", "/login-error", "/logout").permitAll()
-                        .requestMatchers("/product", "/cakeswithoutchocolate", "/cheesecakes", "/chocolatecakes").permitAll()
-                        .requestMatchers("cupcakes").permitAll()
+                        .requestMatchers("/product").permitAll()
+                        .requestMatchers("category").permitAll()
                         .anyRequest().authenticated()
         ).formLogin(
                 formLogin -> {
@@ -35,17 +44,20 @@ public class SecurityConfiguration {
                             .loginPage("/signin")
                             .usernameParameter("email")
                             .passwordParameter("password")
-                            .defaultSuccessUrl("/index")
+                            .defaultSuccessUrl("/index",true)
                             .failureForwardUrl("/login-error");
                 }
         ).logout(
                 logout -> {
                     logout.logoutUrl("/logout")
-                            .logoutSuccessUrl("/signin")
+                            .logoutSuccessUrl("/")
                             .invalidateHttpSession(true);
-
                 }
-        );
+        ).rememberMe(rememberMe ->{
+            rememberMe.key(rememberMeKey)
+                    .rememberMeParameter("rememberme")
+                    .rememberMeCookieName("rememberme");
+        });
         return httpSecurity.build();
     }
 

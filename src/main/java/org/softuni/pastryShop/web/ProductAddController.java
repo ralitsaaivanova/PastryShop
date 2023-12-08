@@ -54,7 +54,7 @@ public class ProductAddController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("redirect:/addProduct");
         }
-        productService.addProduct("andrian", productDTO);
+        productService.addProduct("rali", productDTO);
         return new ModelAndView("redirect:/index");
     }
 }

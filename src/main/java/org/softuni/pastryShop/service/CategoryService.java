@@ -9,4 +9,9 @@ import java.util.List;
 
 public interface CategoryService {
     List<Category> getAll();
+
+    void addCategory(String username, CategoryDTO categoryDTO);
+
+    void remove(Long id);
+    void removeAll();
 }

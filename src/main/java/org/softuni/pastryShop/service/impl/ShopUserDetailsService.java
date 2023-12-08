@@ -30,9 +30,6 @@ public class ShopUserDetailsService implements UserDetailsService {
 
 
         //check if user is found
-        if (user.isEmpty()) {
-            throw new UsernameNotFoundException("User " + email + " not found!");
-        }
         UserDetails userDetails = org.springframework.security.core.userdetails.User
                 .withUsername(user.get().getEmail())
                 .password(user.get().getPassword())
