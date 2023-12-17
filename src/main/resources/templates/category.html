@@ -11,8 +11,12 @@
 
 <div id="content">
     <div>
-        <h1 th:each="category:${categories}"
-            th:value="${category.getId()}"></h1>
+        <p>
+            <h1 th:each="category:${categories}"
+            th:value="${category.getId()}"
+            th:text="${category.getName()}"></h1>
+        </p>
+
         <ul>
             <li>
                 <div>

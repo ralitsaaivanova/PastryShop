@@ -9,6 +9,7 @@ import org.softuni.pastryShop.util.ImageEncryptor;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -58,6 +59,16 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteAll();
     }
 
+    @Override
+    public List<Product> getAll() {
+        return this.productRepository.findAll();
+    }
+
+    @Override
+    public List<Product> getAllByCategory(String id) {
+        return this.productRepository.findAllByCategoryId(Long.parseLong(id));
+    }
+
     private Product map(ProductDTO productDTO) throws IOException {
         Product product = new Product();
 
@@ -73,5 +84,7 @@ public class ProductServiceImpl implements ProductService {
 
         return product;
     }
+
+
 
 }

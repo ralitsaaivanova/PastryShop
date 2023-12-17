@@ -7,5 +7,7 @@ import java.io.IOException;
 public interface ImageEncryptor {
     public byte[] EncryptImage(MultipartFile multipartFile) throws IOException;
 
-    public String DecryptImage(byte[] image) throws IOException;
+    public String DecryptImage(byte[] image);
+
+    MultipartFile DecryptImageAsMultipartFile(byte[] fileBytes) throws IOException;
 }

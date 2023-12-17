@@ -59,11 +59,12 @@
     <div>
         <h1>The Pastry shop</h1>
         <ul>
-            <li>
+            <li th:each="product:${products}">
                 <div>
                     <div>
                         <h2><a href="#">Име на продукта</a></h2>
                         <p>19лв</p>
+                        <a href="#" class="view">Add</a>
                         <a href="#" class="view">Add</a></div>
                     <a href="#"><img src="images/special-treats.jpg" alt=""></a></div>
             </li>

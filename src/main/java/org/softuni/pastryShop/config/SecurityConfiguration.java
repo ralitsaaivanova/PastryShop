@@ -1,16 +1,18 @@
 package org.softuni.pastryShop.config;
 
+import org.softuni.pastryShop.service.oauth.OAuthSuccessHandler;
 import org.softuni.pastryShop.repository.UserRepository;
 import org.softuni.pastryShop.service.impl.ShopUserDetailsService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
-import org.springframework.security.web.DefaultSecurityFilterChain;
+import org.springframework.security.web.SecurityFilterChain;
 
 @EnableMethodSecurity
 @Configuration
@@ -29,14 +31,16 @@ public class SecurityConfiguration {
 
 
     @Bean
-    public DefaultSecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity, OAuthSuccessHandler oAuthSuccessHandler) throws Exception {
 
         httpSecurity.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/index", "/signup", "/signin", "/login-error", "/logout").permitAll()
                         .requestMatchers("/product").permitAll()
-                        .requestMatchers("category").permitAll()
+                        .requestMatchers("/products/add").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
+                        .requestMatchers("category","category/{id}").permitAll()
                         .anyRequest().authenticated()
         ).formLogin(
                 formLogin -> {
@@ -57,7 +61,9 @@ public class SecurityConfiguration {
             rememberMe.key(rememberMeKey)
                     .rememberMeParameter("rememberme")
                     .rememberMeCookieName("rememberme");
-        });
+        }).oauth2Login(
+                oath->oath.successHandler(oAuthSuccessHandler));
+
         return httpSecurity.build();
     }
 

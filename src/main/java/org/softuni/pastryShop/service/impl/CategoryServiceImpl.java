@@ -2,15 +2,15 @@ package org.softuni.pastryShop.service.impl;
 
 import org.softuni.pastryShop.model.dto.CategoryDTO;
 import org.softuni.pastryShop.model.entities.Category;
-import org.softuni.pastryShop.model.entities.Currency;
 import org.softuni.pastryShop.model.entities.User;
 import org.softuni.pastryShop.repository.CategoryRepository;
 import org.softuni.pastryShop.repository.UserRepository;
 import org.softuni.pastryShop.service.CategoryService;
+import org.softuni.pastryShop.util.ImageEncryptor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -30,35 +30,34 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void addCategory(String username, CategoryDTO categoryDTO) {
-        User user = null;
-//        if (username != null) {
-//            userRepository.findByUsername(username);
-//        }
+    public void addCategory(CategoryDTO categoryDTO, UserDetails user) {
+        Category category = map(categoryDTO);
+        User userEntity = userRepository.findByEmail(user.getUsername()).orElseThrow(() ->
+                new IllegalArgumentException("User with email " + user.getUsername() + " not found!"));
 
-        if (categoryDTO != null) {
-            Category category = map(categoryDTO);
-            categoryRepository.save(category);
-        }
+
+        category.setUser(userEntity);
+        categoryRepository.save(category);
     }
 
     @Override
     public void remove(Long id) {
         categoryRepository.deleteById(id);
-
     }
 
     @Override
     public void removeAll() {
         categoryRepository.deleteAll();
-
     }
 
     private Category map(CategoryDTO categoryDTO) {
+        User user = userRepository.findByUsername(categoryDTO.getUsername().getUsername());
         Category category = new Category();
         category.setName(categoryDTO.getCategoryName());
-        category.setUser(this.userRepository.findByUsername(categoryDTO.getUsername()));
+        category.setUser(user);
         return category;
     }
+
+
 }
 

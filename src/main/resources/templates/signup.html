@@ -26,6 +26,13 @@
                                        name="email"
                                        placeholder="E-mail"/>
                             </td>
+<!--                            <td th:if="${#fields.hasErrors('email')}"-->
+<!--                                th:errors="*{email}">-->
+<!--                                <p class="errors alert alert-danger">-->
+<!--                                    Role is required.-->
+<!--                                </p>-->
+<!--                            </td>-->
+
                         </tr>
                         <tr>
                             <td><label for="username">Username</label></td>
@@ -35,13 +42,13 @@
                                        id="username"
                                        name="username"
                                        placeholder="Username"/>
-                                <!--                                       th:field="*{username}"-->
-                                <!--                                       th:errorclass="bg-danger"/>-->
-
-                                <!--                                <small th:if="${#fields.hasErrors('username')}"-->
-                                <!--                                       th:errors="*{username}" class="text-danger">Email error message-->
-                                <!--                                </small>-->
                             </td>
+<!--                            <td th:if="${#fields.hasErrors('username')}"-->
+<!--                                th:errors="*{username}">-->
+<!--                                <p class="errors alert alert-danger">-->
+<!--                                    First name is required.-->
+<!--                                </p>-->
+<!--                            </td>-->
                         </tr>
                         <tr>
                             <td><label for="roles">Role</label></td>
@@ -51,6 +58,13 @@
                                 <option value="SELLER">Seller</option>
                             </select>
                             </td>
+<!--                            <td th:if="${#fields.hasErrors('role')}"-->
+<!--                                th:errors="*{role}">-->
+<!--                                <p class="errors alert alert-danger">-->
+<!--                                    Role is required.-->
+<!--                                </p>-->
+<!--                            </td>-->
+
                         </tr>
                         <tr>
                             <td><label for="password">Password</label></td>
@@ -60,6 +74,12 @@
                                        name="password"
                                        id="password">
                             </td>
+<!--                            <td th:if="${#fields.hasErrors('password')}"-->
+<!--                                th:errors="*{password}">-->
+<!--                                <p class="errors alert alert-danger">-->
+<!--                                    Password is required.-->
+<!--                                </p>-->
+<!--                            </td>-->
                         </tr>
                         <tr>
                             <td><label for="confirmpass">Confirm<br>
@@ -68,16 +88,7 @@
                                        class="form-control"
                                        id="confirmpass"></td>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td class="rememberme"><label for="rememberme">
-                                <input type="checkbox" id="rememberme">
-                                Remember me on this computer</label></td>
-                        </tr>
                     </table>
-                    <p th:if="${bad_credentials}" class="errors alert alert-danger">
-                        Invalid username or password.
-                    </p>
                     <input type="submit" value="Sign-up" class="submitbtn">
                 </form>
             </div>

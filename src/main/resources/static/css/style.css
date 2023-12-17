@@ -624,11 +624,11 @@ div#content div ul#admin-menu li a#not-selected2 {
 	border: 6px solid #fefffa;
 }
 #content div form p {
-	line-height: 28px;
-	margin: 0;
-	padding-bottom: 20px;
+	line-height: 0;
+	margin-left: 10px;
+	padding-bottom: 9px;
 	text-align: justify;
-	width: 420px;
+	width: 309px;
 }
 #content div form p span {
 	color: #5F5D5E;
@@ -1290,6 +1290,10 @@ div#content div ul#admin-menu li a#not-selected2 {
 	flex-direction: row;
 }
 
+#sign-buttons-container.sign-buttons-container a{
+	margin-top: 5px;
+}
+
 #hello{
 	margin-top: -28px;
 	margin-right:8px;
@@ -1305,4 +1309,10 @@ div#content div ul#admin-menu li a#not-selected2 {
 #index-hello{
 	margin-right: 8px;
 }
+
+tr td div img{
+	width: 315px;
+	height: 230px;
+}
+
 

@@ -1,11 +1,16 @@
 package org.softuni.pastryShop.service.impl;
 
 import org.softuni.pastryShop.model.dto.UserRegistrationDTO;
+import org.softuni.pastryShop.model.dto.events.UserRegisteredEvent;
 import org.softuni.pastryShop.model.entities.User;
-import org.softuni.pastryShop.model.enums.Role;
 import org.softuni.pastryShop.repository.UserRepository;
 import org.softuni.pastryShop.service.UserService;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,17 +20,50 @@ public class UserServiceImpl implements UserService {
 
     private final PasswordEncoder passwordEncoder;
 
+    private final UserDetailsService pastryShopUserDetailsService;
+    private final ApplicationEventPublisher appEventPublisher;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+
+    public UserServiceImpl(UserRepository userRepository,
+                           PasswordEncoder passwordEncoder,
+                           ApplicationEventPublisher applicationEventPublisher,
+                           UserDetailsService pastryShopUserDetailsService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.appEventPublisher=applicationEventPublisher;
+        this.pastryShopUserDetailsService = pastryShopUserDetailsService;
     }
 
     @Override
     public void registerUser(UserRegistrationDTO userRegistrationDTO) {
         userRepository.save(map(userRegistrationDTO));
+        appEventPublisher.publishEvent(new UserRegisteredEvent(
+                "UserService",
+                userRegistrationDTO.email(),
+                userRegistrationDTO.username()
+        ));
     }
 
+    @Override
+    public void createUserIfNotExist(String email, String names) {
+        // Create manually a user in the database
+        // password not necessary
+    }
+
+    @Override
+    public Authentication login(String email) {
+        UserDetails userDetails = pastryShopUserDetailsService.loadUserByUsername(email);
+
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                userDetails,
+                userDetails.getPassword(),
+                userDetails.getAuthorities()
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
+        return auth;
+    }
 
 
     private User map(UserRegistrationDTO userRegistrationDTO) {

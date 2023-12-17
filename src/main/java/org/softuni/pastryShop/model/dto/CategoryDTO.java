@@ -1,8 +1,10 @@
 package org.softuni.pastryShop.model.dto;
 
+import org.softuni.pastryShop.model.entities.User;
+
 public class CategoryDTO {
     private String categoryName;
-    private String username;
+    private User username;
 
     public String getCategoryName() {
         return categoryName;
@@ -12,11 +14,11 @@ public class CategoryDTO {
         this.categoryName = categoryName;
     }
 
-    public String getUsername() {
+    public User getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(User username) {
         this.username = username;
     }
 
