@@ -9,9 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.List;
 
 public interface CategoryService {
+
+    CategoryDTO getCategoryById(Long id);
     List<Category> getAll();
 
-    void addCategory(CategoryDTO categoryDTO, UserDetails user);
+    void addCategory(CategoryDTO categoryDTO);
 
     void remove(Long id);
     void removeAll();

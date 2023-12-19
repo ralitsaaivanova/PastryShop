@@ -6,6 +6,8 @@ import org.softuni.pastryShop.model.entities.Measure;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ProductDTO{
+
+    private Long id;
     private String name;
     private Double price;
     private Double weight;
@@ -13,6 +15,15 @@ public class ProductDTO{
     private Long measureId;
     private Long categoryId;
     private MultipartFile photo;
+    private String displayPhoto;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -68,6 +79,14 @@ public class ProductDTO{
 
     public void setPhoto(MultipartFile photo) {
         this.photo = photo;
+    }
+
+    public String getDisplayPhoto() {
+        return displayPhoto;
+    }
+
+    public void setDisplayPhoto(String displayPhoto) {
+        this.displayPhoto = displayPhoto;
     }
 
     public static ProductDTO empty(){

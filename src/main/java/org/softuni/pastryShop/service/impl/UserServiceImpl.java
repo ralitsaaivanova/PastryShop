@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
@@ -33,6 +35,7 @@ public class UserServiceImpl implements UserService {
         this.appEventPublisher=applicationEventPublisher;
         this.pastryShopUserDetailsService = pastryShopUserDetailsService;
     }
+
 
     @Override
     public void registerUser(UserRegistrationDTO userRegistrationDTO) {
@@ -63,6 +66,11 @@ public class UserServiceImpl implements UserService {
         SecurityContextHolder.getContext().setAuthentication(auth);
 
         return auth;
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 
 

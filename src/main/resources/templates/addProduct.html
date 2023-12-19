@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head}">
 </head>
 
@@ -14,15 +14,17 @@
         <div id="product">
             <div>
                 <!---------Registration form start----->
-                <form th:action="@{/addProduct}"
+                <form th:action="@{${action}}"
                       th:method="POST"
                       th:object="${productDTO}"
                       enctype="multipart/form-data">
                     <span>Add Product</span>
+                    <input type="hidden" th:field="*{id}">
                     <table>
                         <tr>
                             <td><label for="name">Product Name</label></td>
                             <td><input type="text"
+                                       th:field="*{name}"
                                        id="name"
                                        name="name"
                                        class="form-control"></td>
@@ -31,6 +33,7 @@
                             <td><label for="price">Price</label></td>
                             <td><input type="number"
                                        id="price"
+                                       th:field="*{price}"
                                        name="price"
                                        min="0"
                                        max="1000"
@@ -56,6 +59,7 @@
                             <td><label for="weight">Weight</label></td>
                             <td><input type="number"
                                        id="weight"
+                                       th:field="*{weight}"
                                        name="weight"
                                        min="0"
                                        max="1000"
@@ -90,14 +94,16 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="image" id="drop-area">Photo</label></td>
+                            <td><label for="image">Photo</label></td>
                             <td>
-                                <input type="file"
-                                       class="form-control"
-                                       name="photo"
-                                       accept="image/*"
-                                       id="image" hidden="hidden">
-                                <div><img src="../images/upload-file-icon.png"></div>
+                                <label for="image" id="drop-area">
+                                    <input name="photo" th:field="*{photo}" type="file" accept="image/*" id="image" hidden>
+                                    <div id="img-view">
+                                        <img src="/images/upload-file-icon.png">
+                                        <p>Drag and drop or click here to upload image</p>
+                                    </div>
+                                </label>
+                                <input type="hidden" th:field="*{displayPhoto}" id="displayImage">
                             </td>
                         </tr>
 
@@ -113,6 +119,7 @@
 </div>
 <div id="footer" th:replace="~{fragments/footer}">
 </div>
+<div th:replace="~{fragments/scripts}"></div>
 
 </body>
 </html>

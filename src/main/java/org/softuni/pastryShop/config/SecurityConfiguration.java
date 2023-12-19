@@ -39,6 +39,8 @@ public class SecurityConfiguration {
                         .requestMatchers("/index", "/signup", "/signin", "/login-error", "/logout").permitAll()
                         .requestMatchers("/product").permitAll()
                         .requestMatchers("/products/add").permitAll()
+                        .requestMatchers("/products/delete/{id}").permitAll()
+                        .requestMatchers("/products/edit/{id}").permitAll()
                         .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
                         .requestMatchers("category","category/{id}").permitAll()
                         .anyRequest().authenticated()

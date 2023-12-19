@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}">
+</head>
+
+
+<body>
+<div id="header" th:replace="~{fragments/header-navbar}">
+</div>
+
+
+<div id="content">
+    <div>
+        <div id="category">
+            <div>
+                <!---------Registration form start----->
+                <form th:action="@{/changeRole}"
+                      th:method="POST"
+                      th:object="${changeRoleDTO}">
+                    <span>Change Role</span>
+                    <table>
+                        <tr>
+                            <td><label for="roles">Role</label></td>
+                            <td><select id="roles" name="role" class="form-control">
+                                <option value="">-Select role-</option>
+                                <option value="BUYER">Buyer</option>
+                                <option value="SELLER">Seller</option>
+                            </select>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td><label for="username">Username</label></td>
+                            <td><select id="username"
+                                        name="username"
+                                        class="form-control">
+                                <option value="">-Select username-</option>
+                                <option th:each="user: ${users}"
+                                        th:text="${user.getUsername()}"
+                                        th:value="${user.getId()}">
+
+                                </option>
+                            </select>
+                            </td>
+
+                        </tr>
+
+                    </table>
+                    <input type="submit"
+                           value="Add Category"
+                           class="submitbtn">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer" th:replace="~{fragments/footer}">
+</div>
+
+</body>
+</html>
+

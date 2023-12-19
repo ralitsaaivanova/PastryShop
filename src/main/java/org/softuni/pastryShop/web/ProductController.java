@@ -1,25 +1,114 @@
 package org.softuni.pastryShop.web;
 
+import jakarta.validation.Valid;
+import org.softuni.pastryShop.model.dto.CategoryDTO;
+import org.softuni.pastryShop.model.dto.ProductDTO;
+import org.softuni.pastryShop.model.dto.ProductDisplayDTO;
+import org.softuni.pastryShop.service.CategoryService;
+import org.softuni.pastryShop.service.CurrencyService;
+import org.softuni.pastryShop.service.MeasureService;
 import org.softuni.pastryShop.service.ProductService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.IOException;
 
 @Controller
 public class ProductController {
-    private final ProductService productService;
 
-    public ProductController(ProductService productService) {
+    private final ProductService productService;
+    private final CategoryService categoryService;
+    private final MeasureService measureService;
+    private final CurrencyService currencyService;
+
+    public ProductController(ProductService productService, CategoryService categoryService,
+                             MeasureService measureService, CurrencyService currencyService) {
         this.productService = productService;
+        this.categoryService = categoryService;
+        this.measureService = measureService;
+        this.currencyService = currencyService;
     }
 
+
+
     @GetMapping("/product")
-    public ModelAndView getProducts(Model model) {
-        model.addAttribute("products",productService.getAll());
+    public ModelAndView getProducts(Model model,@PageableDefault(
+                size=3,
+                sort="price"
+        ) Pageable pageable) {
+
+        Page<ProductDisplayDTO> allProducts = productService.getAll(pageable);
+        model.addAttribute("products",allProducts);
 
         return new ModelAndView("product");
     }
 
+    @GetMapping("addProduct")
+    public ModelAndView addProduct(Model model) {
+        if (!model.containsAttribute("productDTO")) {
+            model.addAttribute("productDTO", ProductDTO.empty());
+
+        }
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("measures", measureService.getAll());
+        model.addAttribute("currencies", currencyService.getAll());
+
+        return new ModelAndView("addProduct");
+    }
+
+
+    @PostMapping("addProduct")
+    public ModelAndView addNewProduct(@ModelAttribute("productDTO") @Valid ProductDTO productDTO,
+                                      BindingResult bindingResult) throws IOException {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("addProduct");
+        }
+        productService.addProduct(productDTO);
+        return new ModelAndView("redirect:/index");
+    }
+
+    @GetMapping("/products/edit/{id}")
+    public ModelAndView editProduct(@PathVariable String id, Model model) throws IOException {
+        ProductDTO product = productService.getProductDTOById(Long.parseLong(id));
+
+        if (!model.containsAttribute("productDTO")) {
+            model.addAttribute("productDTO", product);
+        }
+
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("currencies", currencyService.getAll());
+        model.addAttribute("measures",measureService.getAll());
+        model.addAttribute("action", "/products/edit/{id}(id=" + id + ")");
+        return new ModelAndView("addProduct");
+    }
+
+    @PostMapping("/products/edit/{id}")
+    public String editProduct(
+            @ModelAttribute("productsAddBindingModel") @Valid ProductDTO productDTO,
+            BindingResult bindingResult) throws IOException {
+
+        if (bindingResult.hasErrors()) {
+            return ("redirect:/product/edit/" + productDTO.getId());
+        }
+        productService.update(productDTO);
+
+        return ("redirect:/product");
+    }
+
+    @GetMapping("/products/delete/{id}")
+    public String deleteProduct(@PathVariable String id) throws IOException {
+
+        ProductDTO categoryId = productService.getProductDTOById(Long.parseLong(id));
+        Long productDTOId = categoryId.getId();
+        productService.delete(Long.parseLong(id));
+
+        return ("redirect:/product");
+    }
 
 }

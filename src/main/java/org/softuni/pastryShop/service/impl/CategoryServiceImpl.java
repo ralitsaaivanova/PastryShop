@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -25,18 +26,22 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
+    public CategoryDTO getCategoryById(Long id) {
+        Category category = categoryRepository.findById(id).get();
+
+
+        return mapCategoryToCategoryDTO(category);
+    }
+
+    @Override
     public List<Category> getAll() {
         return this.categoryRepository.findAll();
     }
 
     @Override
-    public void addCategory(CategoryDTO categoryDTO, UserDetails user) {
-        Category category = map(categoryDTO);
-        User userEntity = userRepository.findByEmail(user.getUsername()).orElseThrow(() ->
-                new IllegalArgumentException("User with email " + user.getUsername() + " not found!"));
+    public void addCategory(CategoryDTO categoryDTO) {
+        Category category = mapCategoryDTOtoCategory(categoryDTO);
 
-
-        category.setUser(userEntity);
         categoryRepository.save(category);
     }
 
@@ -50,13 +55,23 @@ public class CategoryServiceImpl implements CategoryService {
         categoryRepository.deleteAll();
     }
 
-    private Category map(CategoryDTO categoryDTO) {
+    private Category mapCategoryDTOtoCategory(CategoryDTO categoryDTO) {
         User user = userRepository.findByUsername(categoryDTO.getUsername().getUsername());
         Category category = new Category();
         category.setName(categoryDTO.getCategoryName());
         category.setUser(user);
         return category;
     }
+
+    private CategoryDTO mapCategoryToCategoryDTO(Category category){
+        CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setCategoryName(category.getName());
+        categoryDTO.setUsername(categoryDTO.getUsername());
+        return categoryDTO;
+    }
+
+
+
 
 
 }

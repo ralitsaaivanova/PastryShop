@@ -215,8 +215,8 @@ div#content div ul#admin-menu li a#not-selected {
 	text-transform: capitalize;
 	border: 1px solid #6f3f52;
 	border-radius: 30px;
-	width: 300px;
-	margin-left:85px;
+	width: 230px;
+	margin-left:60px;
 	padding: 20px;
 }
 
@@ -231,7 +231,23 @@ div#content div ul#admin-menu li a#not-selected2 {
 	text-transform: capitalize;
 	border: 1px solid #6f3f52;
 	border-radius: 30px;
-	width: 300px;
+	width: 230px;
+	margin-left:16px;
+	padding: 20px;
+}
+
+div#content div ul#admin-menu li a#not-selected3 {
+	background: #fff0f5;
+	color: #5b5c5e;
+	display: block;
+	font-size: 14px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #e8edf1;
+	text-transform: capitalize;
+	border: 1px solid #6f3f52;
+	border-radius: 30px;
+	width: 230px;
 	margin-left:-3px;
 	padding: 20px;
 }
@@ -498,57 +514,7 @@ div#content div ul#admin-menu li a#not-selected2 {
 	margin: 0;
 	padding-bottom: 10px;
 }
-#content div ul {
-	list-style: none;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-}
-#content div ul li {
-	float: left;
-	height: 220px;
-	width: 450px;
-}
-#content div ul li div {
-	padding: 0;
-	position: relative;
-	width: auto;
-}
-#content div ul li div div {
-	left: 30px;
-	padding: 0;
-	position: absolute;
-	top: 20px;
-	width: auto;
-}
-#content div ul li div div h2 {
-	font-family: Trebuchet MS;
-	font-size: 18px;
-	font-style: italic;
-	font-weight: normal;
-	margin: 0;
-}
-#content div ul li div div h2 a {
-	color: #84284d;
-	text-decoration: none;
-}
-#content div ul li div div p {
-	color: #5F5D5E;
-	margin: 0 0 10px;
-	line-height: 28px;
-	width: 185px;
-	text-align: left;
-}
-#content div ul li div div a.view {
-	background: url(../images/sprite-buttons.gif) no-repeat 0 -451px;
-	color: #84284d;
-	display: block;
-	height: 30px;
-	line-height: 30px;
-	text-align: center;
-	text-decoration: none;
-	width: 120px;
-}
+
 #content div.home div.aside {
 	float: left;
 	height: auto;
@@ -624,9 +590,9 @@ div#content div ul#admin-menu li a#not-selected2 {
 	border: 6px solid #fefffa;
 }
 #content div form p {
-	line-height: 0;
+	line-height: 1.5;
 	margin-left: 10px;
-	padding-bottom: 9px;
+	padding-right: 20px;
 	text-align: justify;
 	width: 309px;
 }
@@ -956,28 +922,10 @@ div#content div ul#admin-menu li a#not-selected2 {
 	padding: 15px 10px 10px 15px;
 }
 
-
-
-#content div div#category div form input#name,
-#content div div#category div form input#username{
-	border: 1px solid #e0e0e0;
-	height: 25px;
-	width: 310px;
+#content div div#category div form label{
+	margin-left: 10px;
+	margin-right: 10px;
 }
-
-#content div div#category div form{
-	padding-left: 10px;
-	padding-right: 10px;
-}
-#content div div#category div form span{
-	font-size: 20px;
-	text-align: center;
-	margin-bottom: 10px;
-}
-
-
-
-
 
 
 
@@ -1309,10 +1257,77 @@ div#content div ul#admin-menu li a#not-selected2 {
 #index-hello{
 	margin-right: 8px;
 }
-
 tr td div img{
 	width: 315px;
 	height: 230px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content div ul {
+	list-style: none;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+#content div ul li {
+	float: left;
+	height: 220px;
+	width: 400px;
+}
+#content div ul li div {
+	padding: 0;
+	position: relative;
+	width: auto;
+}
+#content div ul li div div {
+	left: 30px;
+	padding: 0;
+	position: absolute;
+	top: 20px;
+	width: auto;
+}
+#content div ul li div div h2 {
+	font-family: Trebuchet MS;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: normal;
+	margin: 0;
+}
+#content div ul li div div h2 a {
+	color: #84284d;
+	text-decoration: none;
+}
+#content div ul li div div p {
+	color: #5F5D5E;
+	margin: 0 0 10px;
+	line-height: 28px;
+	width: 60px;
+	text-align: left;
+}
+#content div ul li div div a.view {
+	background: url(../images/sprite-buttons.gif) no-repeat 0 -451px;
+	color: #84284d;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: none;
+	width: 120px;
+}
+
 
 

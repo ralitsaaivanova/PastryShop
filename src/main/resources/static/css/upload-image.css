@@ -1,0 +1,32 @@
+#drop-area{
+    width: 300px;
+    height: 200px;
+    background: linear-gradient(#e7baff, #c2b6d9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 35px auto;
+}
+
+#img-view{
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 20px !important;
+    border: 2px dashed #bbb5ff !important;
+    background: #f7f8ff;
+    background-position: center !important;
+    background-size: cover !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+#img-view img{
+    width: 300px;
+    height: 200px;
+
+}
+
+#img-view p{
+    margin: 0px auto;
+}
