@@ -50,13 +50,14 @@
                     <p th:if="${bad_credentials}" class="errors alert alert-danger">
                         Invalid username or password.
                     </p>
-                    <input type="submit" value="Sign-In" class="submitbtn">
+                    <input type="submit" value="Sign-In" id="signIn" class="submitbtn">
                 </form>
             </div>
         </div>
     </div>
 </div>
 <div id="footer" th:replace="~{fragments/footer}">
+    <div th:replace="~{fragments/scripts}"></div>
 </div>
 </body>
 </html>

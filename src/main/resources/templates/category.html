@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragments/head}">
 </head>
 
@@ -24,9 +25,9 @@
                             <p style="margin-right:-10px;margin-left: -5px">Price:</p>
                             <p th:text="*{price}"></p>
                         </div>
-                        <a style="margin-top: 30px" th:href="@{/category/edit/{id}(id=${product.getId()})}" class="view">Edit</a>
-                        <a th:href="@{/category/delete/{id}(id=${product.getId()})}" class="view" >Delete</a>
-                        <a href="#" class="view">Add</a>
+                        <a style="margin-top: 30px" th:href="@{/category/edit/{id}(id=${product.getId()})}" sec:authorize="hasAnyRole('ADMIN','SELLER')" class="view">Edit</a>
+                        <a th:href="@{/category/delete/{id}(id=${product.getId()})}" class="view" sec:authorize="hasAnyRole('ADMIN','SELLER')" >Delete</a>
+                        <a th:href="@{/products/add-to-shopping-cart/{id}(id=${product.getId()})}" class="view"  style="margin-top: 25px;">Add</a>
 
                         <div id="myModal" class="modal fade">
                             <div class="modal-dialog modal-confirm">

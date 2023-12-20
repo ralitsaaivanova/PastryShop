@@ -4,18 +4,15 @@ import org.softuni.pastryShop.model.dto.ProductDTO;
 import org.softuni.pastryShop.model.dto.ProductDisplayDTO;
 import org.softuni.pastryShop.model.entities.Category;
 import org.softuni.pastryShop.model.entities.Product;
-import org.softuni.pastryShop.model.entities.User;
 import org.softuni.pastryShop.repository.*;
 import org.softuni.pastryShop.service.ProductService;
 import org.softuni.pastryShop.util.ImageEncryptor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,6 +63,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void delete(long id) {
         productRepository.deleteById(id);
+    }
+
+    @Override
+    public ProductDisplayDTO getProductDisplayDTOById(long id) {
+        return productRepository.findById(id).map(this::mapProductToProductDisplayDTO).get();
     }
 
     @Override
@@ -145,6 +147,7 @@ public class ProductServiceImpl implements ProductService {
         return productDTO;
     }
 
+    @Override
     public ProductDisplayDTO mapProductToProductDisplayDTO(Product product) {
         ProductDisplayDTO productDisplayDTO = new ProductDisplayDTO();
         productDisplayDTO.setId(product.getId());

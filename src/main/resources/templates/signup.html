@@ -11,11 +11,12 @@
 <div id="content">
     <div>
         <div id="account">
-            <div>
+            <div id="login-container">
                 <!---------Registration form start----->
                 <form th:action="@{/signup}"
                       th:method="POST"
-                      th:object="${userRegistrationDTO}">
+                      th:object="${userRegistrationDTO}"
+                      id="registrationForm">
                     <span>SIGN-UP</span>
                     <table>
                         <tr>
@@ -25,13 +26,10 @@
                                        id="email"
                                        name="email"
                                        placeholder="E-mail"/>
+                                <p class="text-danger" id="email-error" style="display: none">
+                                    Valid email is required.
+                                </p>
                             </td>
-<!--                            <td th:if="${#fields.hasErrors('email')}"-->
-<!--                                th:errors="*{email}">-->
-<!--                                <p class="errors alert alert-danger">-->
-<!--                                    Role is required.-->
-<!--                                </p>-->
-<!--                            </td>-->
 
                         </tr>
                         <tr>
@@ -42,24 +40,11 @@
                                        id="username"
                                        name="username"
                                        placeholder="Username"/>
+                                <p class="text-danger" id="username-error" style="display: none">
+                                    Username is required.
+                                </p>
                             </td>
-<!--                            <td th:if="${#fields.hasErrors('username')}"-->
-<!--                                th:errors="*{username}">-->
-<!--                                <p class="errors alert alert-danger">-->
-<!--                                    First name is required.-->
-<!--                                </p>-->
-<!--                            </td>-->
                         </tr>
-<!--                        <tr>-->
-<!--                            <td><label for="roles">Role</label></td>-->
-<!--                            <td><select id="roles" name="role">-->
-<!--                                <option></option>-->
-<!--                                <option value="BUYER">Buyer</option>-->
-<!--                                <option value="SELLER">Seller</option>-->
-<!--                            </select>-->
-<!--                            </td>-->
-
-<!--                        </tr>-->
                         <tr>
                             <td><label for="password">Password</label></td>
                             <td>
@@ -67,13 +52,10 @@
                                        class="form-control"
                                        name="password"
                                        id="password">
+                                <p id="password-error" class="text-danger" style="display: none">
+                                    Password is required.
+                                </p>
                             </td>
-<!--                            <td th:if="${#fields.hasErrors('password')}"-->
-<!--                                th:errors="*{password}">-->
-<!--                                <p class="errors alert alert-danger">-->
-<!--                                    Password is required.-->
-<!--                                </p>-->
-<!--                            </td>-->
                         </tr>
                         <tr>
                             <td><label for="confirmpass">Confirm<br>
@@ -81,9 +63,18 @@
                             <td><input type="password"
                                        class="form-control"
                                        id="confirmpass"></td>
+                            <p id="confirmPassword-error" class="text-danger" style="display: none">
+                                Password confirmation is required.
+                            </p>
+                            <p id="password-match-error" class="text-danger" style="display: none">
+                                Passwords must match.
+                            </p>
+                            <p id="password-length-error" class="text-danger" style="display: none;">
+                                Password must be more than 6 symbols.
+                            </p>
                         </tr>
                     </table>
-                    <input type="submit" value="Sign-up" class="submitbtn">
+                    <input type="submit" value="Sign-up" id="signUp" class="submitbtn">
                 </form>
             </div>
             <!---------Registration form start----->
@@ -93,6 +84,7 @@
 
 <div id="footer" th:replace="~{fragments/footer}">
 </div>
+<div th:replace="~{fragments/scripts}"></div>
 
 </body>
 </html>

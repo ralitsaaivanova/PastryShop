@@ -12,7 +12,8 @@
             <div id="logo"><a href="#"><img src="images/logo.gif" alt=""></a></div>
             <div>
                 <div>
-                    <a sec:authorize="isAuthenticated()" href="/account">My Account</a>
+                    <a sec:authorize="hasAnyRole('ADMIN','SELLER')" href="/account">My Account</a>
+                    <a sec:authorize="hasRole('BUYER')" href="/accountShoppingCard">My Account</a>
                     <div sec:authorize="!isAuthenticated()" class="sign-buttons-container" id="sign-buttons-container">
                         <a href="/signup">Sign up</a>
                         <a href="/signin">Sign in</a>

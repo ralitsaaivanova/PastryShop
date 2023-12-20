@@ -19,6 +19,7 @@ public interface ProductService {
     void update(ProductDTO productDTO) throws IOException;
     void delete(long id);
 
+    ProductDisplayDTO getProductDisplayDTOById(long id);
     ProductDTO getProductDTOById(long id) throws IOException;
 
     Page<ProductDisplayDTO> getAllProductsByCategory(Long categoryId, Pageable pageable);
@@ -30,4 +31,6 @@ public interface ProductService {
     Page<ProductDisplayDTO> getAll(Pageable pageable);
 
     List<Product> getAllByCategory(String id);
+
+    ProductDisplayDTO mapProductToProductDisplayDTO(Product product);
 }
