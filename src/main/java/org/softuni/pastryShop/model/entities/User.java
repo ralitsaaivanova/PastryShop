@@ -3,8 +3,9 @@ package org.softuni.pastryShop.model.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import org.hibernate.validator.constraints.Length;
-import org.softuni.pastryShop.model.enums.Role;
+import org.softuni.pastryShop.model.enums.RoleEnum;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,8 +24,12 @@ public class User extends BaseEntity {
     private String password;
 
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles = new ArrayList<>();
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
 
@@ -55,12 +60,12 @@ public class User extends BaseEntity {
         return this;
     }
 
-    public Role getRole() {
-        return role;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public User setRole(Role role) {
-        this.role = role;
+    public User setRoles(List<Role> roles) {
+        this.roles = roles;
         return this;
     }
 

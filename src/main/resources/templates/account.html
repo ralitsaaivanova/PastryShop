@@ -17,7 +17,7 @@
         <ul sec:authorize="hasAnyRole('ADMIN','SELLER')" id="admin-menu">
             <li><a id="not-selected" href="/addCategory">Add Category</a></li>
             <li><a id="not-selected2" href="/addProduct">Add Product</a></li>
-            <li sec:authorize="hasRole('ADMIN')"><a id="not-selected3" href="/changeRole" >Change role</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a id="not-selected3" th:href="@{/manageUserRoles}" >Manage role</a></li>
         </ul>
     </div>
 

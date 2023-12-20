@@ -32,7 +32,7 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity, OAuthSuccessHandler oAuthSuccessHandler) throws Exception {
-
+        httpSecurity.csrf().disable();
         httpSecurity.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
@@ -41,6 +41,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/products/add").permitAll()
                         .requestMatchers("/products/delete/{id}").permitAll()
                         .requestMatchers("/products/edit/{id}").permitAll()
+                        .requestMatchers("/api/manageUserRoles").permitAll()
                         .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
                         .requestMatchers("category","category/{id}").permitAll()
                         .anyRequest().authenticated()

@@ -1,8 +1,8 @@
 package org.softuni.pastryShop.model.dto;
 
-import org.softuni.pastryShop.model.enums.Role;
+import org.softuni.pastryShop.model.enums.RoleEnum;
 
 public class ChangeRoleDTO {
-    Role role;
+    RoleEnum role;
     String username;
 }

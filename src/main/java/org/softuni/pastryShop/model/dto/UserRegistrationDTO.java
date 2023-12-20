@@ -3,7 +3,8 @@ package org.softuni.pastryShop.model.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import org.softuni.pastryShop.model.enums.Role;
+import org.softuni.pastryShop.model.entities.Role;
+import org.softuni.pastryShop.model.enums.RoleEnum;
 import org.softuni.pastryShop.validation.UniqueUserEmail;
 import org.softuni.pastryShop.validation.FieldMatch;
 
@@ -14,7 +15,6 @@ import org.softuni.pastryShop.validation.FieldMatch;
 )
 public record UserRegistrationDTO(@NotNull @Email @UniqueUserEmail String email,
                                   @NotEmpty String username,
-                                  @NotNull Role role,
                                   String password,
                                   String confirmPassword) {
 }
