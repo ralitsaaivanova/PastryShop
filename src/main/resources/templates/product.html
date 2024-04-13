@@ -9,7 +9,7 @@
 <div id="header">
     <div>
         <div>
-            <div id="logo"><a href="#"><img src="images/logo.gif" alt=""></a></div>
+            <div id="logo"><a href="#"><img src="/images/logo-removebg-preview.png" alt=""></a></div>
             <div>
                 <div>
                     <a sec:authorize="hasAnyRole('ADMIN','SELLER')" href="/account">My Account</a>
@@ -47,11 +47,10 @@
                 </div>
             </div>
         </div>
-        <ul id="all-products">
-            <li><a href="/index">Home</a></li>
+        <ul id="home-products">
+            <li class="not_selected2"><a href="/index">Home</a></li>
             <li class="current"><a href="/product">The Pastry shop</a></li>
         </ul>
-        <div class="section"><a th:href="@{/category/4}"><img src="images/wedding-cupcakes-small.jpg" alt=""></a></div>
     </div>
 </div>
 </body>
