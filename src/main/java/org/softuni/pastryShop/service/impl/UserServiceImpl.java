@@ -125,8 +125,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAll() {
-        return userRepository.findAll();
+    public List<UserDTO> getAll() {
+        List<User> users = userRepository.findAll();
+
+        List<UserDTO> userDTOS = new ArrayList<>();
+        for (User user:users) {
+            UserDTO currentUserDTO = mapUserToUserDTO(user);
+            userDTOS.add(currentUserDTO);
+        }
+
+        return userDTOS;
     }
 
 
@@ -147,6 +155,15 @@ public class UserServiceImpl implements UserService {
 
         user.setId(userDTO.getId());
         return user;
+    }
+
+    private UserDTO mapUserToUserDTO(User user){
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUsername(user.getUsername());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setPassword(user.getPassword());
+        userDTO.setRoles(user.getRoles());
+        return userDTO;
     }
 
     private UserDTO mapUserToUserEditDTO(User user) throws IOException {

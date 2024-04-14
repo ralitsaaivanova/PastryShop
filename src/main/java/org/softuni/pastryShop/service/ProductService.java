@@ -30,7 +30,7 @@ public interface ProductService {
 
     Page<ProductDisplayDTO> getAll(Pageable pageable);
 
-    List<Product> getAllByCategory(String id);
+    List<ProductDisplayDTO> getAllByCategory(String id);
 
     ProductDisplayDTO mapProductToProductDisplayDTO(Product product);
 }

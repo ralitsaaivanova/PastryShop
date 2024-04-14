@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -112,8 +113,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllByCategory(String id) {
-        return this.productRepository.findAllByCategoryId(Long.parseLong(id));
+    public List<ProductDisplayDTO> getAllByCategory(String id) {
+        List<ProductDisplayDTO> productDisplayDTOS = new ArrayList<>();
+
+        List<Product> productsByCategory = this.productRepository.findAllByCategoryId(Long.parseLong(id));
+
+        for (Product product:productsByCategory) {
+            ProductDisplayDTO currentProductDisplayDTO = mapProductToProductDisplayDTO(product);
+            productDisplayDTOS.add(currentProductDisplayDTO);
+        }
+
+        return  productDisplayDTOS;
     }
 
     public Product mapProductDTOtoProduct(ProductDTO productDTO) throws IOException {

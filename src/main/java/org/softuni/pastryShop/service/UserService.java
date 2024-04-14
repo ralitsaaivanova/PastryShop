@@ -16,7 +16,7 @@ public interface UserService {
 
     Authentication login(String email);
 
-    List<User> getAll();
+    List<UserDTO> getAll();
 
 
     void updateUsersRoles(List<UserEditRolesDTO> usersEdit);

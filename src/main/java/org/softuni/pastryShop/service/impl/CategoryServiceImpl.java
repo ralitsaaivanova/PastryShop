@@ -10,6 +10,7 @@ import org.softuni.pastryShop.util.ImageEncryptor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,8 +35,16 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<Category> getAll() {
-        return this.categoryRepository.findAll();
+    public List<CategoryDTO> getAll() {
+        List<CategoryDTO> categoryDTOS = new ArrayList<>();
+
+        List<Category> categories = categoryRepository.findAll();
+        for (Category category:categories) {
+            CategoryDTO currentCategoryDTO = mapCategoryToCategoryDTO(category);
+            categoryDTOS.add(currentCategoryDTO);
+        }
+
+        return categoryDTOS;
     }
 
     @Override
