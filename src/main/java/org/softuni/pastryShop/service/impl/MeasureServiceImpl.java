@@ -43,6 +43,7 @@ public class MeasureServiceImpl implements MeasureService {
 
     private MeasureDTO mapMeasureToMeasureDTO(Measure measure){
         MeasureDTO measureDTO = new MeasureDTO();
+        measureDTO.setId(measure.getId());
         measureDTO.setName(measure.getName());
         measureDTO.setShortName(measure.getShortName());
 

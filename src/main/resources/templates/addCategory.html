@@ -12,6 +12,7 @@
 <div id="content">
     <div>
         <div id="category">
+            <div class="addProductBtn" id=""><a href="/addProduct">Add Product</a></div>
             <div>
                 <!---------Registration form start----->
                 <form th:action="@{/addCategory}"
@@ -20,15 +21,17 @@
                     <span>Add Category</span>
                     <table>
                         <tr>
-                            <td><label for="name">Category Name</label></td>
+                            <td><label for="categoryName">Category Name</label></td>
                             <td><input type="text"
-                                       id="name"
+                                       th:field="*{categoryName}"
+                                       id="categoryName"
                                        name="categoryName"
                                        class="form-control"></td>
                         </tr>
                         <tr>
                             <td><label for="username">Username</label></td>
                             <td><input type="text"
+                                       th:field="*{username}"
                                        id="username"
                                        name="username"
                                        class="form-control"></td>

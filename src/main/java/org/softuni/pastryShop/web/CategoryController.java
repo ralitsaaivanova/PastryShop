@@ -46,7 +46,7 @@ public class CategoryController {
         this.currencyService = currencyService;
     }
 
-    @GetMapping("addCategory")
+    @GetMapping("/addCategory")
     public ModelAndView addCategory(Model model) {
         if(!model.containsAttribute("categoryDTO")){
             model.addAttribute("categoryDTO",CategoryDTO.empty());
@@ -54,22 +54,19 @@ public class CategoryController {
         return new ModelAndView("addCategory");
     }
 
-    @PostMapping("addCategory")
+    @PostMapping("/addCategory")
     public ModelAndView addCategory(@ModelAttribute("categoryDTO") @Valid CategoryDTO categoryDTO,
-                                    Model model,
                                     BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            model.addAttribute("bad_credentials", "true");
-            //TODO: add bad credentials to category Add html
-
-            return new ModelAndView("redirect:/addCategory");
+//            model.addAttribute("bad_credentials", "true");
+//            //TODO: add bad credentials to category Add html
+            return new ModelAndView("addCategory");
         }
         categoryService.addCategory(categoryDTO);
-
         return new ModelAndView("redirect:/index");
     }
 
-    @GetMapping("category/{id}")
+    @GetMapping("/category/{id}")
     public ModelAndView getCategory(@PathVariable String id, Model model,
                                     @PageableDefault(
                                             size=3,

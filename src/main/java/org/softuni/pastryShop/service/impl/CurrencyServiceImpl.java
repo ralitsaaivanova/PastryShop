@@ -49,6 +49,7 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     private CurrencyDTO mapCurrencyToCurrencyDTO(Currency currency){
         CurrencyDTO currencyDTO = new CurrencyDTO();
+        currencyDTO.setId(currency.getId());
         currencyDTO.setName(currency.getName());
         currencyDTO.setShortName(currency.getShortName());
 

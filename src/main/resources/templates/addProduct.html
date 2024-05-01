@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head}">
 </head>
 
@@ -12,14 +14,14 @@
 <div id="content">
     <div>
         <div id="product">
+            <div class="addCategoryBtn"><a href="/addCategory">Add Category</a></div>
             <div>
                 <!---------Registration form start----->
-                <form th:action="@{${action}}"
+                <form th:action="@{/addProduct}"
                       th:method="POST"
                       th:object="${productDTO}"
                       enctype="multipart/form-data">
                     <span>Add Product</span>
-                    <input type="hidden" th:field="*{id}">
                     <table>
                         <tr>
                             <td><label for="name">Product Name</label></td>
@@ -44,9 +46,10 @@
                             <td><label for="currencyId">Currency</label></td>
                             <td><select id="currencyId"
                                         name="currencyId"
+                                        th:field="*{currencyId}"
                                         class="form-control">
                                 <option value="">-Select currency-</option>
-                                <option th:each="currency: ${currencies}"
+                                <option th:each="currency : ${currencies}"
                                         th:text="${currency.getName()}"
                                         th:value="${currency.getId()}"
                                         th:selected="*{currencyId} == ${currency.getId()}">
@@ -69,6 +72,7 @@
                             <td><label for="measureId">Measure</label></td>
                             <td><select id="measureId"
                                         name="measureId"
+                                        th:field="*{measureId}"
                                         class="form-control">
                                 <option value="">- Select measure-</option>
                                 <option
@@ -83,12 +87,13 @@
                             <td><label for="categoryId">Category</label></td>
                             <td><select id="categoryId"
                                         name="categoryId"
+                                        th:field="*{categoryId}"
                                         class="form-control">
                                 <option value="">- Select a category-</option>
                                 <option
                                         th:each="category:${categories}"
                                         th:value="${category.getId()}"
-                                        th:text="${category.getName()}"
+                                        th:text="${category.getCategoryName()}"
                                         th:selected="*{categoryId} == ${category.getId()}"></option>
                             </select>
                             </td>

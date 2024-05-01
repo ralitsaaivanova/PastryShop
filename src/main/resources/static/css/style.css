@@ -103,7 +103,7 @@ p a {
 	margin-left: -40px;
 	padding-left: 20px;
 	padding-right: 20px;
-	border: solid gray 1px;
+	border: solid rgb(128, 128, 128) 1px;
 	background-color: #f2e4eb;
 	border-radius: 21px;
 }
@@ -190,7 +190,6 @@ div#content div ul#admin-menu{
 	list-style: none;
 	overflow: hidden;
 	padding: 0;
-	margin-left: 11px;
 	display: flex;
 
 }
@@ -239,7 +238,7 @@ div#content div ul#admin-menu li a#not-selected2 {
 	border: 1px solid #6f3f52;
 	border-radius: 30px;
 	width: 230px;
-	margin-left:85px;
+	margin-left:60px;
 	padding: 20px;
 }
 
@@ -575,7 +574,6 @@ div#content div ul#admin-menu li a#not-selected3 {
 #content div.home div.section {
 	background: url(../images/bg-foodstory.gif) repeat-y top center;
 	float: right;
-	height: 450px;
 	padding: 20px;
 	width: 450px;
 }
@@ -850,7 +848,7 @@ div#content div ul#admin-menu li a#not-selected3 {
 #content div div#account div form {
 	border-radius: 40px;
 	background-color: #faf5f7;
-	border: gray solid 1px;
+	border: rgb(128, 128, 128) solid 1px;
 	margin: 0;
 	padding-bottom: 15px;
 }
@@ -878,20 +876,38 @@ div#content div ul#admin-menu li a#not-selected3 {
 }
 
 #content div div#product {
-	background: url(../images/bg-form-top-curve.gif) no-repeat center top;
 	color: #5F5D5E;
 	margin: 60px auto 0;
 	padding: 10px 0 0;
 	width: 420px;
 }
 
+#content div div#product div.addCategoryBtn a{
+	background: #fff0f5;
+	color: #5b5c5e;
+	display: block;
+	font-size: 14px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #e8edf1;
+	text-transform: capitalize;
+	border: 1px solid #6f3f52;
+	border-radius: 30px;
+	width: 230px;
+	margin-left: 100px;
+	padding: 20px;
+	margin-bottom: 20px;
+	font-weight: 600;
+}
+
 #content div div#product div {
-	background: url(../images/bg-form-bottom-curve.gif) no-repeat center bottom;
 	padding: 0 0 10px;
 	width: auto;
 }
 #content div div#product div form {
-	background: url(../images/bg-form.gif) repeat-y;
+	border-radius: 40px;
+	background-color: #faf5f7;
+	border: rgb(128, 128, 128) solid 1px;
 	margin: 0;
 	padding-bottom: 15px;
 }
@@ -909,15 +925,22 @@ div#content div ul#admin-menu li a#not-selected3 {
 
 #content div div#product div form input#name,
 #content div div#product div form input#price,
-#content div div#product div form select#currencies,
+#content div div#product div form select#currencyId,
 #content div div#product div form input#weight,
-#content div div#product div form select#measures,
-#content div div#product div form select#categories,
+#content div div#product div form select#measureId,
+#content div div#product div form select#categoryId,
 #content div div#product div form input#photo
 {
 	border: 1px solid #e0e0e0;
-	height: 25px;
 	width: 310px;
+	height: 40px;
+	margin-bottom: 5px;
+}
+
+#content div div#product div form select#currencyId,
+#content div div#product div form select#measureId,
+#content div div#product div form select#categoryId{
+	margin-left:10px;
 }
 
 #content div div#product div form{
@@ -931,7 +954,6 @@ div#content div ul#admin-menu li a#not-selected3 {
 }
 
 #content div div#category {
-	background: url(../images/bg-form-top-curve.gif) no-repeat center top;
 	color: #5F5D5E;
 	margin: 60px auto 0;
 	padding: 10px 0 0;
@@ -939,33 +961,63 @@ div#content div ul#admin-menu li a#not-selected3 {
 }
 
 #content div div#category div {
-	background: url(../images/bg-form-bottom-curve.gif) no-repeat center bottom;
 	padding: 0 0 10px;
 	width: auto;
 }
-#content div div#category div form {
-	background: url(../images/bg-form.gif) repeat-y;
-	margin: 0;
-	padding-bottom: 15px;
+
+#content div div#category div.addProductBtn a{
+	background: #fff0f5;
+	color: #5b5c5e;
+	display: block;
+	font-size: 14px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #e8edf1;
+	text-transform: capitalize;
+	border: 1px solid #6f3f52;
+	border-radius: 30px;
+	width: 230px;
+	margin-left: 100px;
+	padding: 20px;
+	margin-bottom: 20px;
+	font-weight: 600;
 }
+
+
+
+
+#content div div#category div form {
+	border-radius: 40px;
+	background-color: #faf5f7;
+	border: rgb(128, 128, 128) solid 1px;
+	margin: 0;
+	padding: 10px 10px 15px 10px;
+}
+
+#category div form input#name.form-control{
+	margin-bottom: 10px;
+}
+
 #content div div#category div form input {
 	color: #5F5D5E;
 	margin: 0 0 0 10px;
 }
+
+#content div div#category div form input#categoryName.form-control{
+	margin-bottom: 5px;
+}
+
+
 #content div div#category div form span {
 	color: #84284D;
 	display: block;
-	padding: 15px 10px 10px 15px;
+	padding: 15px 10px 10px 150px;
 }
 
 #content div div#category div form label{
 	margin-left: 10px;
 	margin-right: 10px;
 }
-
-
-
-
 
 
 #content div div#account div form input#rememberme {
@@ -1000,27 +1052,32 @@ div#content div ul#admin-menu li a#not-selected3 {
 }
 
 #content div div#product div form input.submitbtn {
-	background: url(../images/sprite-buttons.gif) no-repeat 0 -376px;
 	color: #84284D;
-	border: 0;
-	height: 25px;
+	height: 35px;
 	font-size: 11px;
-	margin-left: 300px;
-	margin-top: 10px;
+	margin-left: 160px;
+	margin-top: 40px;
 	text-transform: uppercase;
-	width: 90px;
+	width: 120px;
+	background-color: #efdfe6;
+	border-radius: 6px;
+	border-color: #84284D;
+	padding: 10px;
+	margin-bottom: 20px;
 }
 
 #content div div#category div form input.submitbtn {
-	background: url(../images/sprite-buttons.gif) no-repeat 0 -376px;
 	color: #84284D;
-	border: 0;
-	height: 25px;
+	height: 35px;
 	font-size: 11px;
-	margin-left: 300px;
+	margin-left: 230px;
 	margin-top: 10px;
 	text-transform: uppercase;
-	width: 90px;
+	width: 120px;
+	background-color: #efdfe6;
+	border-radius: 6px;
+	border-color: #84284D;
+	padding:10px ;
 }
 
 #footer {
@@ -1299,44 +1356,74 @@ tr td div img{
 	height: 230px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #content div ul {
 	list-style: none;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap:30px;
+	width:1100px;
+	margin-left: -75px;
 }
-#content div ul li {
+
+#content div ul#admin-menu li {
 	float: left;
-	height: 220px;
-	width: 400px;
+	height: 300px;
+	width: 30%;
+	background: none;
 }
+
+#content div ul li {
+	background-color: #efe1e7;
+	float: left;
+	width: 48.5%;
+	border-top-left-radius: 50px;
+	border-bottom-right-radius: 50px;
+}
+
+#content div ul li#products-item {
+	max-width: 310px;
+
+}
+
+#content div ul li#products-item div img{
+	width: 250px;
+	height: 170px;
+	object-fit: contain;
+	margin-left: 30px;
+	margin-top: 15px;
+}
+
+#content div ul li#products-item div h2{
+	margin-left: 30px;
+}
+
+#content div ul li#products-item div div{
+	margin-left: 40px;
+	padding: 0;
+	width: auto;
+
+}
+#content div ul li#products-item div div a.view{
+	margin-top: 10px;
+	margin-left: 50px;
+}
+
 #content div ul li div {
 	padding: 0;
 	position: relative;
 	width: auto;
 }
+
+
 #content div ul li div div {
-	left: 30px;
+	margin-left: 40px;
 	padding: 0;
-	position: absolute;
-	top: 20px;
 	width: auto;
 }
+
 #content div ul li div div h2 {
 	font-family: Trebuchet MS;
 	font-size: 18px;
@@ -1344,10 +1431,12 @@ tr td div img{
 	font-weight: normal;
 	margin: 0;
 }
+
 #content div ul li div div h2 a {
 	color: #84284d;
 	text-decoration: none;
 }
+
 #content div ul li div div p {
 	color: #5F5D5E;
 	margin: 0 0 10px;
@@ -1355,8 +1444,12 @@ tr td div img{
 	width: 60px;
 	text-align: left;
 }
+
 #content div ul li div div a.view {
-	background: url(../images/sprite-buttons.gif) no-repeat 0 -451px;
+	background-color: #d6bcc7;
+	border: solid;
+	border-radius: 10px;
+	margin-bottom: 10px;
 	color: #84284d;
 	display: block;
 	height: 30px;
@@ -1365,6 +1458,7 @@ tr td div img{
 	text-decoration: none;
 	width: 120px;
 }
+
 
 
 

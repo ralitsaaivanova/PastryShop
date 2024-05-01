@@ -50,21 +50,23 @@ public class ProductController {
         return new ModelAndView("product");
     }
 
-    @GetMapping("addProduct")
+    @GetMapping("/addProduct")
     public ModelAndView addProduct(Model model) {
         if (!model.containsAttribute("productDTO")) {
             model.addAttribute("productDTO", ProductDTO.empty());
 
         }
-        model.addAttribute("categories", categoryService.getAll());
-        model.addAttribute("measures", measureService.getAll());
         model.addAttribute("currencies", currencyService.getAll());
+        model.addAttribute("measures", measureService.getAll());
+        model.addAttribute("categories", categoryService.getAll());
+
+
 
         return new ModelAndView("addProduct");
     }
 
 
-    @PostMapping("addProduct")
+    @PostMapping("/addProduct")
     public ModelAndView addNewProduct(@ModelAttribute("productDTO") @Valid ProductDTO productDTO,
                                       BindingResult bindingResult) throws IOException {
         if (bindingResult.hasErrors()) {

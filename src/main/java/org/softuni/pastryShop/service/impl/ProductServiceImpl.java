@@ -3,6 +3,8 @@ package org.softuni.pastryShop.service.impl;
 import org.softuni.pastryShop.model.dto.ProductDTO;
 import org.softuni.pastryShop.model.dto.ProductDisplayDTO;
 import org.softuni.pastryShop.model.entities.Category;
+import org.softuni.pastryShop.model.entities.Currency;
+import org.softuni.pastryShop.model.entities.Measure;
 import org.softuni.pastryShop.model.entities.Product;
 import org.softuni.pastryShop.repository.*;
 import org.softuni.pastryShop.service.ProductService;
@@ -133,9 +135,15 @@ public class ProductServiceImpl implements ProductService {
         product.setName(productDTO.getName());
         product.setPrice(productDTO.getPrice());
         product.setWeight(productDTO.getWeight());
-        product.setCurrency(this.currencyRepository.findById(productDTO.getCurrencyId()).get());
-        product.setMeasure(this.measureRepository.findById(productDTO.getMeasureId()).get());
-        product.setCategory(this.categoryRepository.findById(productDTO.getCategoryId()).get());
+
+        Currency currency = this.currencyRepository.findById(productDTO.getCurrencyId()).get();
+        product.setCurrency(currency);
+
+        Measure measure = this.measureRepository.findById(productDTO.getMeasureId()).get();
+        product.setMeasure(measure);
+
+        Category category = this.categoryRepository.findById(productDTO.getCategoryId()).get();
+        product.setCategory(category);
         product.setDeleted(false);
         product.setPhoto(productDTO.getPhoto().isEmpty() ? null:this.imageEncryptor.EncryptImage(productDTO.getPhoto()));
 

@@ -65,7 +65,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     private Category mapCategoryDTOtoCategory(CategoryDTO categoryDTO) {
-        User user = userRepository.findByUsername(categoryDTO.getUsername().getUsername());
+        User user = userRepository.findByUsername(categoryDTO.getUsername());
         Category category = new Category();
         category.setName(categoryDTO.getCategoryName());
         category.setUser(user);
@@ -74,6 +74,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     private CategoryDTO mapCategoryToCategoryDTO(Category category){
         CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setId(category.getId());
         categoryDTO.setCategoryName(category.getName());
         categoryDTO.setUsername(categoryDTO.getUsername());
         return categoryDTO;
