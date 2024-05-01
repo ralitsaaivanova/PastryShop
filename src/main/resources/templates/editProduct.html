@@ -1,10 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}">
 </head>
+
+
 <body>
+<div id="header" th:replace="~{fragments/header-navbar}">
+</div>
+
+
+<div id="content">
+    <div>
+        <div id="product">
+            <div>
+                <!---------Registration form start----->
+                <form th:action="@{${action}}"
+                      th:method="POST"
+                      th:object="${productDTO}"
+                      enctype="multipart/form-data">
+                    <span>Edit Product</span>
+                    <table>
+                        <tr><td><input type="hidden" th:field="*{id}"></td></tr>
+                        <tr>
+                            <td><label for="name">Product Name</label></td>
+                            <td><input type="text"
+                                       th:field="*{name}"
+                                       id="name"
+                                       name="name"
+                                       class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="price">Price</label></td>
+                            <td><input type="number"
+                                       id="price"
+                                       th:field="*{price}"
+                                       name="price"
+                                       min="0"
+                                       max="1000"
+                                       step="0.01"
+                                       class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="currencyId">Currency</label></td>
+                            <td><select id="currencyId"
+                                        name="currencyId"
+                                        th:field="*{currencyId}"
+                                        class="form-control">
+                                <option value="">-Select currency-</option>
+                                <option th:each="currency : ${currencies}"
+                                        th:text="${currency.getName()}"
+                                        th:value="${currency.getId()}"
+                                        th:selected="*{currencyId} == ${currency.getId()}">
+
+                                </option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="weight">Weight</label></td>
+                            <td><input type="number"
+                                       id="weight"
+                                       th:field="*{weight}"
+                                       name="weight"
+                                       min="0"
+                                       max="1000"
+                                       step="0.01"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="measureId">Measure</label></td>
+                            <td><select id="measureId"
+                                        name="measureId"
+                                        th:field="*{measureId}"
+                                        class="form-control">
+                                <option value="">- Select measure-</option>
+                                <option
+                                        th:each="measure:${measures}"
+                                        th:value="${measure.getId()}"
+                                        th:text="${measure.getName()}"
+                                        th:selected="*{measureId} == ${measure.getId()}"></option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="categoryId">Category</label></td>
+                            <td><select id="categoryId"
+                                        name="categoryId"
+                                        th:field="*{categoryId}"
+                                        class="form-control">
+                                <option value="">- Select a category-</option>
+                                <option
+                                        th:each="category:${categories}"
+                                        th:value="${category.getId()}"
+                                        th:text="${category.getCategoryName()}"
+                                        th:selected="*{categoryId} == ${category.getId()}"></option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="image">Photo</label></td>
+                            <td>
+                                <label for="image" id="drop-area">
+                                    <input name="photo" th:field="*{photo}" type="file" accept="image/*" id="image" hidden>
+                                    <div id="img-view">
+                                        <img src="/images/upload-file-icon.png">
+                                        <p>Drag and drop or click here to upload image</p>
+                                    </div>
+                                </label>
+                                <input type="hidden" th:field="*{displayPhoto}" id="displayImage">
+                            </td>
+                        </tr>
+
+                    </table>
+                    <input type="submit"
+                           value="Edit Product"
+                           class="submitbtn">
+                </form>
+            </div>
+            <!---------Registration form start----->
+        </div>
+    </div>
+</div>
+<div id="footer" th:replace="~{fragments/footer}">
+</div>
+<div th:replace="~{fragments/scripts}"></div>
 
 </body>
 </html>

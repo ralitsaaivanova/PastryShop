@@ -88,12 +88,12 @@ public class ProductController {
         model.addAttribute("currencies", currencyService.getAll());
         model.addAttribute("measures",measureService.getAll());
         model.addAttribute("action", "/products/edit/{id}(id=" + id + ")");
-        return new ModelAndView("addProduct");
+        return new ModelAndView("editProduct");
     }
 
     @PostMapping("/products/edit/{id}")
     public String editProduct(
-            @ModelAttribute("productsAddBindingModel") @Valid ProductDTO productDTO,
+            @ModelAttribute("productDTO") @Valid ProductDTO productDTO,
             BindingResult bindingResult) throws IOException {
 
         if (bindingResult.hasErrors()) {
