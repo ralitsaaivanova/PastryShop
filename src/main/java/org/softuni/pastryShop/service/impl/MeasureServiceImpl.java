@@ -32,7 +32,7 @@ public class MeasureServiceImpl implements MeasureService {
         return measureDTOS;
     }
 
-    private Measure mapMeasureDTOtoMeasure(MeasureDTO measureDTO) {
+    public Measure mapMeasureDTOtoMeasure(MeasureDTO measureDTO) {
 
         Measure measure = new Measure();
         measure.setName(measureDTO.getName());
@@ -41,7 +41,7 @@ public class MeasureServiceImpl implements MeasureService {
         return measure;
     }
 
-    private MeasureDTO mapMeasureToMeasureDTO(Measure measure){
+    public MeasureDTO mapMeasureToMeasureDTO(Measure measure){
         MeasureDTO measureDTO = new MeasureDTO();
         measureDTO.setId(measure.getId());
         measureDTO.setName(measure.getName());

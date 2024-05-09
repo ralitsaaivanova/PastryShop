@@ -13,7 +13,7 @@
             <div>
                 <div>
                     <a sec:authorize="hasAnyRole('ADMIN','SELLER')" href="/account">My Account</a>
-                    <a sec:authorize="hasRole('BUYER')" href="/accountShoppingCard">My Account</a>
+                    <a sec:authorize="hasRole('BUYER')" href="/accountShoppingCard"><i class="fa fa-shopping-cart"></i></a>
                     <div sec:authorize="!isAuthenticated()" class="sign-buttons-container" id="sign-buttons-container">
                         <a href="/signup">Sign up</a>
                         <a href="/signin">Sign in</a>
@@ -53,11 +53,20 @@
         </ul>
     </div>
 </div>
-</body>
 
 <div id="content">
     <div>
         <h1>The Pastry shop</h1>
+        <ul id="category-list">
+            <li th:each = "category:${categories}"
+            th:object="${category}">
+                <a th:text="${category.getCategoryName()}"
+                        th:href="@{/category/{id}(id=${category.getId()})}">
+
+                </a>
+            </li>
+        </ul>
+
         <ul>
             <li id="products-item" th:each="product:${products}"
                 th:object="${product}">
@@ -67,7 +76,10 @@
                     <div>
                         <a  th:href="@{/products/edit/{id}(id=${product.getId()})}" class="view" sec:authorize="hasAnyRole('ADMIN','SELLER')">Edit</a>
                         <a th:href="@{/products/delete/{id}(id=${product.getId()})}" class="view" sec:authorize="hasAnyRole('ADMIN','SELLER')">Delete</a>
-                        <a href="#" class="view" >Add</a>
+
+                        <!--<a sec:authorize="hasRole('BUYER')" href="/accountShoppingCard" class="view" >Add</a>-->
+                        <a sec:authorize="hasRole('BUYER')" th:href="@{/products/add-to-shopping-cart/{id}(id=${product.getId()})}" class="view" >Add</a>
+                        <a sec:authorize="!isAuthenticated()" href="/signin" class="view" >Add</a>
                     </div>
                 </div>
                 <div>
@@ -77,8 +89,6 @@
                         <p style="margin-right:-10px;">Price:</p>
                         <p th:text="*{price}"></p>
                     </div>
-
-
 
                     <div id="myModal" class="modal fade">
                         <div class="modal-dialog modal-confirm">
@@ -100,6 +110,36 @@
                 </div>
             </li>
         </ul>
+
+        <div class="container mt-5">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+
+                    <!-- First page logic start -->
+                    <li class="page-item" th:classappend="${products.isFirst() ? 'disabled' : ''}">
+                        <a th:if="${products.isFirst()}" class="page-link" href="#" aria-label="Fisrt"><span
+                                aria-hidden="true">&laquo;</span></a>
+                        <a th:unless="${products.isFirst()}" class="page-link"
+                           th:href="@{/products/all/{id}(size=${products.getSize()})}" aria-label="Fisrt"><span
+                                aria-hidden="true">&laquo;</span></a>
+                    </li>
+                    <!-- EO: First page logic start -->
+
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+
+                    <!-- Last page logic start -->
+                    <li class="page-item" th:classappend="${products.isLast() ? 'disabled' : ''}">
+                        <a th:if="${products.isLast()}" class="page-link" href="#" aria-label="Last"><span
+                                aria-hidden="true">&raquo;</span></a>
+                        <a th:unless="${products.isLast()}" class="page-link"
+                           th:href="@{/products/all(size=${products.getSize()}, page=${products.getTotalPages() - 1})}"
+                           aria-label="Last"><span aria-hidden="true">&raquo;</span></a>
+                    </li>
+                    <!-- EO: Last page logic start -->
+                </ul>
+            </nav>
+        </div>
     </div>
 
 

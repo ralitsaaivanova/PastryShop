@@ -13,7 +13,7 @@
             <div>
                 <div>
                     <a sec:authorize="hasAnyRole('ADMIN','SELLER')" href="/account">My Account</a>
-                    <a sec:authorize="hasRole('BUYER')" href="/accountShoppingCard">My Account</a>
+                    <a sec:authorize="hasRole('BUYER')" href="/accountShoppingCard"><i class="fa fa-shopping-cart"></i></a>
                     <div sec:authorize="!isAuthenticated()" class="sign-buttons-container" id="sign-buttons-container">
                         <a href="/signup">Sign up</a>
                         <a href="/signin">Sign in</a>

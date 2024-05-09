@@ -1,6 +1,7 @@
 package org.softuni.pastryShop.web;
 
 import jakarta.validation.Valid;
+import org.softuni.pastryShop.model.dto.CategoryDTO;
 import org.softuni.pastryShop.model.dto.OrderDTO;
 import org.softuni.pastryShop.model.dto.ProductDTO;
 import org.softuni.pastryShop.model.dto.ProductDisplayDTO;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class ProductController {
@@ -45,7 +47,9 @@ public class ProductController {
         ) Pageable pageable) {
 
         Page<ProductDisplayDTO> allProducts = productService.getAll(pageable);
+        List<CategoryDTO> categoryDTOList = categoryService.getAll();
         model.addAttribute("products",allProducts);
+        model.addAttribute("categories",categoryDTOList);
 
         return new ModelAndView("product");
     }

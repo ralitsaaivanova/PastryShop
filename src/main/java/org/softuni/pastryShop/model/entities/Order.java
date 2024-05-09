@@ -15,8 +15,17 @@ public class Order extends BaseEntity {
 
     @ManyToOne
     private User user;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name="product_orders",
+            joinColumns = @JoinColumn(name="order_id"),
+            inverseJoinColumns = @JoinColumn(name="product_id"))
     private List<Product> products = new ArrayList<>();
+
+//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private List<Product> products = new ArrayList<>();
     @Column
     private Double discount;
     @Column

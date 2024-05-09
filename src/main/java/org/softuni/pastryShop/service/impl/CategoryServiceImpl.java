@@ -64,7 +64,7 @@ public class CategoryServiceImpl implements CategoryService {
         categoryRepository.deleteAll();
     }
 
-    private Category mapCategoryDTOtoCategory(CategoryDTO categoryDTO) {
+    public Category mapCategoryDTOtoCategory(CategoryDTO categoryDTO) {
         User user = userRepository.findByUsername(categoryDTO.getUsername());
         Category category = new Category();
         category.setName(categoryDTO.getCategoryName());
@@ -72,7 +72,7 @@ public class CategoryServiceImpl implements CategoryService {
         return category;
     }
 
-    private CategoryDTO mapCategoryToCategoryDTO(Category category){
+    public CategoryDTO mapCategoryToCategoryDTO(Category category){
         CategoryDTO categoryDTO = new CategoryDTO();
         categoryDTO.setId(category.getId());
         categoryDTO.setCategoryName(category.getName());

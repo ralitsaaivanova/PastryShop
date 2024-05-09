@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.data.domain.Pageable;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class CategoryController {
@@ -75,11 +76,12 @@ public class CategoryController {
 
         CategoryDTO categoryDTO = categoryService.getCategoryById(Long.parseLong(id));
 
-//        model.addAttribute("categories", categoryService.getAll());
         Page<ProductDisplayDTO> allProductsByCategoryId= productService.getAllProductsByCategory(Long.parseLong(id),pageable);
+        List<CategoryDTO> categoryDTOList = categoryService.getAll();
 
         model.addAttribute("products",allProductsByCategoryId);
         model.addAttribute("currentCategory",categoryDTO);
+        model.addAttribute("categories",categoryDTOList);
 
         ModelAndView modelAndView = new ModelAndView("category");
         modelAndView.addObject("id",id);

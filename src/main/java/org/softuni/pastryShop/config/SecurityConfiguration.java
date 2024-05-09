@@ -38,12 +38,15 @@ public class SecurityConfiguration {
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/index", "/signup", "/signin", "/login-error", "/logout").permitAll()
                         .requestMatchers("/product").permitAll()
-                        .requestMatchers("/products/add").permitAll()
-                        .requestMatchers("/products/delete/{id}").permitAll()
-                        .requestMatchers("/products/edit/{id}").permitAll()
+                        .requestMatchers("/addProduct").hasAnyRole("ADMIN","SELLER")
+                        .requestMatchers("/products/delete/{id}").hasAnyRole("ADMIN","SELLER")
+                        .requestMatchers("/products/edit/{id}").hasAnyRole("SELLER","ADMIN")
                         .requestMatchers("/api/manageUserRoles").permitAll()
                         .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
                         .requestMatchers("category","category/{id}").permitAll()
+                        .requestMatchers("/addCategory").hasAnyRole("ADMIN","SELLER")
+                        .requestMatchers("account").hasAnyRole("ADMIN","SELLER")
+                        .requestMatchers("/accountShoppingCard").hasRole("BUYER")
                         .anyRequest().authenticated()
         ).formLogin(
                 formLogin -> {

@@ -39,7 +39,7 @@ public class OrderController {
     public ModelAndView makeOrder(@AuthenticationPrincipal UserDetails userDetails){
         OrderDTO orderDTO = this.orderService.getActiveOrderForUser(userDetails);
         this.orderService.finalizeOrder(orderDTO);
-        return new ModelAndView("index");
+        return new ModelAndView("successfulOrder");
     }
 
     @GetMapping("shopping-cart/remove-product/{id}")

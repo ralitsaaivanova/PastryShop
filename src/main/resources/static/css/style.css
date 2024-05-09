@@ -130,11 +130,21 @@ p a {
 	margin-bottom: 50px;
 }
 
+#header div ul#home-products li button,
+#header div ul#all-products li button{
+	background: #efdfe6;
+	border: none;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-radius: 25px;
+}
+
+
+
 #header div ul li {
 	float: left;
 	height: 70px;
 	line-height: 70px;
-	width: 330px;
 
 }
 
@@ -845,6 +855,16 @@ div#content div ul#admin-menu li a#not-selected3 {
 	padding: 0 0 10px;
 	width: auto;
 }
+
+#content div div#account div#haveAccount{
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+#content div div#account div#haveAccount a{
+	color: black;
+	text-decoration-line: underline;
+}
 #content div div#account div form {
 	border-radius: 40px;
 	background-color: #faf5f7;
@@ -1375,16 +1395,48 @@ tr td div img{
 	background: none;
 }
 
+#content div ul#category-list li{
+	padding: 10px;
+	margin-bottom: 70px;
+	border: 1px solid #ba5e83;
+	border-radius: 10px;
+	margin-top:20px;
+}
+
+#content div ul#category-list li a{
+	text-decoration: none;
+	color: #5c5656;
+}
+
+
 #content div ul li {
 	background-color: #efe1e7;
 	float: left;
-	width: 48.5%;
 	border-top-left-radius: 50px;
 	border-bottom-right-radius: 50px;
 }
 
+#content div div.container.mt-5 nav ul.pagination.justify-content-center{
+	margin-left: -200px;
+}
+
+#content div div.container.mt-5 nav ul.pagination.justify-content-center li.page-item.disabled{
+	width: 5%;
+}
+
+#content div div.container.mt-5 nav ul.pagination.justify-content-center li.page-item{
+	width: 8.5%;
+}
+
+#content div div.container.mt-5 nav ul.pagination.justify-content-center li.page-item a.page-link{
+	text-align: center;
+	background: #efe1e7;
+	text-decoration: none;
+	color: #6c7c9f;
+}
+
 #content div ul li#products-item {
-	max-width: 310px;
+	width: 315px;
 
 }
 
