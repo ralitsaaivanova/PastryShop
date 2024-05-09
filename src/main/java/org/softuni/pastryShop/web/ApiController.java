@@ -14,7 +14,7 @@ public class ApiController {
     public ApiController(UserService userService) {
         this.userService = userService;
     }
-    @PostMapping("/manageUserRoles")
+    @PostMapping("/manage-roles")
     public void manageUserRoles(@RequestBody String model){
         this.userService.updateUserRoles(model);
     }

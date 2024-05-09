@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head}">
 </head>
 
@@ -25,7 +24,7 @@
                                                   enctype="multipart/form-data"
                                                   th:method="POST"
                                                   th:object="${usersHolder}"
-                                                  th:action="@{/manageUserRoles}"
+                                                  th:action="@{/manage-roles}"
                                                   id="roles-form">
                                                 <div class="row" style= " display: flex;gap: 285px" th:each="user : ${usersHolder.users}">
                                                     <div class="col" style="display: flex; gap:15px">

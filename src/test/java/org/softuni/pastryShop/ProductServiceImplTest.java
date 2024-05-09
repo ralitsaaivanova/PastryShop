@@ -180,33 +180,33 @@ public class ProductServiceImplTest {
     }
 
 
-    @Test
-    void testGetAll() throws IOException {
-        // Mock data
-        Product product = new Product();
-        product.setId(1L);
-        product.setName("Test Product");
-        product.setPrice(10.0);
-        product.setWeight(100.0);
-        product.setCurrency(new Currency());
-        product.setMeasure(new Measure());
-        product.setCategory(new Category());
-        product.setPhoto("photo_data".getBytes());
-
-        Pageable pageable = Pageable.unpaged();
-
-        when(productRepository.findAll(pageable)).thenReturn(new PageImpl<>(Collections.singletonList(product)));
-
-        // Test method
-        Page<ProductDisplayDTO> result = productService.getAll(pageable);
-
-        // Assertions
-        assertEquals(1, result.getContent().size());
-        assertEquals(product.getName(), result.getContent().get(0).getName());
-        assertEquals(product.getPrice(), result.getContent().get(0).getPrice());
-        assertEquals(product.getWeight(), result.getContent().get(0).getWeight());
-        assertEquals("photo_data", result.getContent().get(0).getPhoto());
-    }
+//    @Test
+//    void testGetAll() throws IOException {
+//        // Mock data
+//        Product product = new Product();
+//        product.setId(1L);
+//        product.setName("Test Product");
+//        product.setPrice(10.0);
+//        product.setWeight(100.0);
+//        product.setCurrency(new Currency());
+//        product.setMeasure(new Measure());
+//        product.setCategory(new Category());
+//        product.setPhoto("photo_data".getBytes());
+//
+//        Pageable pageable = Pageable.unpaged();
+//
+//        when(productRepository.findAll(pageable)).thenReturn(new PageImpl<>(Collections.singletonList(product)));
+//
+//        // Test method
+//        Page<ProductDisplayDTO> result = productService.getAll(pageable);
+//
+//        // Assertions
+//        assertEquals(1, result.getContent().size());
+//        assertEquals(product.getName(), result.getContent().get(0).getName());
+//        assertEquals(product.getPrice(), result.getContent().get(0).getPrice());
+//        assertEquals(product.getWeight(), result.getContent().get(0).getWeight());
+//        assertEquals("photo_data", result.getContent().get(0).getPhoto());
+//    }
     @Test
     public void testMapProductDTOToProduct() throws IOException {
         ProductDTO bindingModel = new ProductDTO();

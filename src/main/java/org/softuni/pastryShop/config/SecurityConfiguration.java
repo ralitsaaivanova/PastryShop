@@ -41,7 +41,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/addProduct").hasAnyRole("ADMIN","SELLER")
                         .requestMatchers("/products/delete/{id}").hasAnyRole("ADMIN","SELLER")
                         .requestMatchers("/products/edit/{id}").hasAnyRole("SELLER","ADMIN")
-                        .requestMatchers("/api/manageUserRoles").permitAll()
+                        .requestMatchers("/manageUserRoles").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
                         .requestMatchers("category","category/{id}").permitAll()
                         .requestMatchers("/addCategory").hasAnyRole("ADMIN","SELLER")
